@@ -1,0 +1,9 @@
+<% if list %>
+	<h2><%= list.name %></h2>
+	<%= erb :'/lists/_search', locals:{movies_found: false} %>
+	<% if list.movies.count < 1 %>
+		<h3>You have not added any movies to this list.</h3>
+	<% else %>
+
+	<% end %>
+<% end %>
