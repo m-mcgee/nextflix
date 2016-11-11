@@ -1,12 +1,23 @@
 <% if current_user.id == user.id %>
-	<h1>Welcome <%= current_username %></h1>
+	<h1>Welcome, <%= current_username %>!</h1>
 
-  <h3>Your lists</h3>
+  <h3 class="your-lists">Your lists</h3>
+  <a class="create-a-list" href="/lists/new">Create a New List</a>
 
-  <a href="/lists/new">Create a New List</a>
+  <% if user.lists %>
+  	<% user.lists.each do |list| %>
+  		<h4><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
+
+  		<p><%= list.description %></p>
+  	<% end %>
+  <% else %>
+  	<h4>You have no lists. </h4>
+  <% end %>
+
+
 
 	<form action="/list/<%= current_user.id %>/movies" method="post" class="ui icon input ">
-	  <input type="text" name="movie-search" placeholder="Add a movie...">
+	  <input type="text" name="movie_search" placeholder="Add a movie...">
 	  <i class="search icon"></i>
 	  <input type="submit" value="Search">
 	</form>
@@ -15,10 +26,6 @@
 	<% if movies_found %>
 
 		<div id="searched-titles" class="ui grid">
-
-
-
-
 
 			<% movies_found["results"].each do |movie|%>
 			<div class="movie-found four wide column">
@@ -44,18 +51,23 @@
 					    </div>
 					  </div>
 					</div>
-			</div>
-
-			
-		<% end %>
-
-
-
-
-		</div>	
-
-
+				</div>
+			<% end %>
+		</div>
 	<% end %>
+
+<% else %>
+	<h1><%= user.username %>'s lists</h1>
+
+	<% if user.lists %>
+  	<% user.lists.each do |list| %>
+  		<h4><%= list.name %></h4>
+  		<p><%= list.description %></p>
+  	<% end %>
+  <% else %>
+  	<h4><%= user.username %> has no lists. </h4>
+  <% end %>
+
 
 
 

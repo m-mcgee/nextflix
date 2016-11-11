@@ -37,7 +37,7 @@ get '/logout' do
 end
 
 get '/users/:id' do
-  user = User.find(current_user.id)
+  user = User.find(params[:id])
   lists = List.where(user_id: current_user.id)
 
   erb :'/users/show', locals: {user: user, lists: lists, movies_found: false}
@@ -49,15 +49,13 @@ post '/users/:id' do
   if request.xhr?
     movie_id = params.keys[0]
     movie_info = get_movie_info(movie_id)
-
-
   else
     puts "nope<<<<<<<<<<<"
   end
 end
 
 post '/list/:list_id/movies' do
-  title = fix_title_spaces(params["movie-search"])
+  title = fix_title_spaces(params["movie_search"])
   movies_found = search_for_movies(title)
 
   erb :'/users/show', locals: {user: current_user, movies_found: movies_found}
