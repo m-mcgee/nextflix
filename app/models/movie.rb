@@ -3,5 +3,5 @@ class Movie < ActiveRecord::Base
   has_many :lists, through: :list_movies
   has_many :providers
 
-  validates :title, :year, :overview, presence: true
+  validates :title, :year, :overview, :guidebox_id, presence: true
 end

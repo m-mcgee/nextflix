@@ -59,3 +59,8 @@ a.create-a-list {
 h2.list-name-header, h3.list-desc-header {
   display: inline;
 }
+
+div#list-view {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

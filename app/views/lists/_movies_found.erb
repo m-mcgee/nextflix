@@ -10,9 +10,9 @@
                 <div class="ui dimmer">
                   <div class="content">
 
-                    <form action="/movies" method="POST">
+                    <form id="add-movie-form" action="/movies" method="POST">
                       <input type="hidden" name="id" value="<%= movie["id"] %>">
-
+                      <input type="hidden" name="list_id" value="<%= list.id %>">
 
                       <input class="ui inverted button addlist" type="submit" value="Add to List">
                     </form>

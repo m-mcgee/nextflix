@@ -1,5 +1,6 @@
 
 <form id="movie-search-form" action="/movies/new" method="get" class="ui icon input ">
+	<input type="hidden" name="list_id" value="<%= list.id %>">
   <input type="text" name="movie_search" placeholder="Add a movie...">
   <i class="search icon"></i>
   <input type="submit" value="Search">
