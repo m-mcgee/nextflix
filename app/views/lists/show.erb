@@ -1,9 +1,13 @@
 <% if list %>
-	<h2><%= list.name %></h2>
-	<%= erb :'/lists/_search', locals:{movies_found: false} %>
-	<% if list.movies.count < 1 %>
-		<h3>You have not added any movies to this list.</h3>
-	<% else %>
 
-	<% end %>
+  	<h2 class="list-name-header"><%= list.name %> - </h2>
+    <h3 class="list-desc-header"><%= list.description %></h3><br>
+  	<%= erb :'/lists/_search', locals:{movies_found: false, list: list} %>
+  <div id="list-view">
+  	<% if list.movies.count < 1 %>
+  		<h3>You have not added any movies to this list.</h3>
+  	<% else %>
+        <%= erb :'/lists/_show', locals: {list: list} %>
+  	<% end %>
+  </div>
 <% end %>

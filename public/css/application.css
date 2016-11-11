@@ -47,3 +47,20 @@ p .errors {
 div.container > div.layout.main.content {
   margin-top: 100px;
 }
+
+h3.your-lists {
+  display: inline;
+}
+
+a.create-a-list {
+  margin-left: 20px;
+}
+
+h2.list-name-header, h3.list-desc-header {
+  display: inline;
+}
+
+div#list-view {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

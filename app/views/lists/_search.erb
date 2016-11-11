@@ -1,6 +1,7 @@
 
-<form action="/movies/new" method="get" class="ui icon input ">
-  <input type="text" name="movie-search" placeholder="Add a movie...">
+<form id="movie-search-form" action="/movies/new" method="get" class="ui icon input ">
+	<input type="hidden" name="list_id" value="<%= list.id %>">
+  <input type="text" name="movie_search" placeholder="Add a movie...">
   <i class="search icon"></i>
   <input type="submit" value="Search">
 </form>
@@ -11,7 +12,7 @@
 	<div id="searched-titles" class="ui grid">
 
 
-
+<% binding.pry %>
 
 
 		<% movies_found["results"].each do |movie|%>
@@ -23,8 +24,16 @@
 				      <div class="ui dimmer">
 				        <div class="content">
 
-				          <div data-id="<%= movie["id"] %>" data-url="/users/<%= current_user %>" class="center">
-				            <div class="ui inverted button addlist">Add to list</div>
+
+				          <div data-id="<%= movie["id"] %>" data-url="/movies" data- class="center">
+
+				          		<input type="hidden" name="movie[user_id]" value='<%= current_user.id %>'>
+				          		<div class="ui inverted button addlist">Add to list</div>
+
+				          		<form>
+				          			<input class="ui inverted button addlist" type="submit" value=" SOMETHING here">
+				          		</form>
+
 				          </div>
 				        </div>
 				      </div>
@@ -40,13 +49,13 @@
 				</div>
 		</div>
 
-		
+
 	<% end %>
 
 
 
 
-	</div>	
+	</div>
 
 
 <% end %>
