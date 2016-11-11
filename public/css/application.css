@@ -1,0 +1,49 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+span.date {
+  /*margin-left: 10px*/;
+}
+
+nav {
+  float: right;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+#searched-titles {
+  margin-top: 20px;
+}
+
+.logo {
+  margin-top: 35px;
+  float: left;
+}
+
+
+.main {
+  clear: both;
+}
+
+
+p .errors {
+  display: inline-block;
+}
+
+div.container > div.layout.main.content {
+  margin-top: 100px;
+}

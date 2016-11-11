@@ -1,0 +1,60 @@
+ <h2>Create a new account</h2>
+
+  <% if @errors %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        There were errors creating your account.
+      </div>
+      <% @errors.each do |k,v| %>
+        <p><%= k.to_s.capitalize %>: <%= v %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <form class="ui form" action="/users" method="POST">
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="user[username]" placeholder="Tabs0verSpaces">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="text" name="user[email]" placeholder="Richard@piedpiper.com">    
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="user[password]" placeholder="password">   
+    </div>
+    
+    <button class="ui button" type="submit">Create Account</button>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
