@@ -3,40 +3,56 @@
 <head>
 
   <link rel="stylesheet" href="/css/normalize.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
-  <link rel="stylesheet" href="/css/application.css">
 
-  <script src="/js/jquery.js"></script>
-  <script src="/js/application.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+  <link rel="stylesheet" href="/css/owl/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="/css/application.css">
 
   <title></title>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
-      <h1><a class="logo" href="/">Nextflix</a></h1>
-      <nav class="nav">
-        <ul>
-          <% if current_user %>
-            <li><a href="/users/<%= current_user.id %>"><%= current_username %></a></li>
-            <li><a href="/logout">Logout</a></li>
-        
-          <% else %>
-            <li><a href="/login">Log in</a></li>
-            <li><a href="/users/new">Register</a></li>
-          <% end %>
-        </ul>
-      </nav>
+  <div class="ui fixed inverted menu">
+    <div class="ui container nav">
+      <a class="header item logo" href="/">Nextflix</a>
+      <% if current_user %>
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" placeholder="Search...">
+            <i class="search icon"></i>
+          </div>
+        </div>   
+      <% end %>   
+      <div class="right menu">
+        <% if current_user %>
+          <div class="ui simple dropdown item"><%= current_username %><i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item" href="/users/<%= current_user.id %>">Profile</a>
+              <a class="item" href="/logout">Log Out</a>
+            </div>
+          </div>
+        <% else %>
+          <a class="item" href="/login">Log in</a>
+          <a class="item" href="/users/new">Register</a>
+
+        <% end %>
+      </div>
     </div>
+  </div>
 
-
-    <div class="layout main content">
+  <div class="ui container">
+    <div class="layout main content"> 
       <%= yield %>
     </div>
   </div>
+
+  <script src="/js/jquery.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+  <script src="/js/owl/owl.carousel.min.js"></script>
+  <script src="/js/application.js"></script>
 
 </body>
 </html>

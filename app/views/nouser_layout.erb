@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/application.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+  <title></title>
+</head>
+<body>
+
+  <div class="ui inverted vertical masthead center aligned segment nouser">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+      <h1><a class="logo" href="/">Nextflix</a></h1>
+        <div class="right item">
+
+          <% if current_user %>
+            <a class="ui inverted button" href="/users/<%= current_user.id %>"><%= current_username %></a>
+            <a class="ui inverted button" href="/logout">Logout</a>
+          <% else %>
+            <a class="ui inverted button" href="/login">Log in</a>
+            <a class="ui inverted button" href="/users/new">Register</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+      <h1 class="ui inverted header nouser">
+        Find your favorite movies streaming
+      </h1>
+      <h2>Create lists. Follow friends. Enjoy.</h2>
+      <a class="ui huge primary button" href="/users/new">Get Started <i class="right arrow icon"></i></a>
+    </div>
+
+  </div>
+
+  <div class="ui container">
+    <div class="layout main content">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

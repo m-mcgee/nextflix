@@ -1,3 +1,21 @@
-<% list.movies.each do |movie| %>
-  <h4><a href="/movies/<%= movie.id %>"><%= movie.title %> - <%= movie.year %> (<%= movie.genre %>)</a></h4>
-<% end %>
+<div class="owl-container">
+	<% count = list.movies.length %>
+	<div data-count=<%= count %> class="owl-carousel">
+	<% list.movies.each do |movie| %>
+
+		<div class="ui card">
+		  <a class="image" href="/movies/<%= movie.id %>">
+		    <img class="owl-lazy" data-src="<%= movie.img_url %>">
+		  </a>
+
+
+		  <div class="title-info">
+		  	<h3><%= movie.title %></h3>
+		  </div>
+
+		</div>
+	<% end %>
+	</div>
+
+</div>
+

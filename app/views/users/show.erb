@@ -2,13 +2,16 @@
 	<h1>Welcome, <%= current_username %>!</h1>
 
   <h3 class="your-lists">Your lists</h3>
-  <a class="create-a-list" href="/lists/new">Create a New List</a>
+  <a href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
 
   <% if user.lists %>
   	<% user.lists.each do |list| %>
   		<h4><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
 
   		<p><%= list.description %></p>
+  		<%= erb :'/lists/_show', locals: {list: list} %>
+
+
   	<% end %>
   <% else %>
   	<h4>You have no lists. </h4>
