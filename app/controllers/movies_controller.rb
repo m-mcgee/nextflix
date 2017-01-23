@@ -9,7 +9,10 @@ post '/movies' do
   movie_info = get_movie_info(params[:id])
   movie = Movie.find_or_initialize_by( guidebox_id: movie_info["id"], title: movie_info["title"], year: movie_info["release_year"], genre: movie_info["genres"][0]["title"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"] )
   list = List.find(params[:list_id])
+
   if movie.save
+    get_providers(movie_info, movie.id)
+
     lm = ListMovie.find_or_create_by(list_id: list.id, movie_id: movie.id)
     if request.xhr?
       erb :'/lists/_show', locals: {list: list}, layout: false

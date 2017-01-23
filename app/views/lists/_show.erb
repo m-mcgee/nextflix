@@ -7,15 +7,21 @@
 		  <a class="image" href="/movies/<%= movie.id %>">
 		    <img class="owl-lazy" data-src="<%= movie.img_url %>">
 		  </a>
-
+			
 
 		  <div class="title-info">
 		  	<h3><%= movie.title %></h3>
+				
+				<div class="providers-info">
+					<% if movie.providers.length > 0 %>
+						<% movie.providers.each do |provider| %>
+							<a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
+						<% end %>
+			  	<% end %>
+				</div>	
 		  </div>
 
 		</div>
 	<% end %>
-	</div>
-
 </div>
 

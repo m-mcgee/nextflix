@@ -23,3 +23,14 @@ def get_movie_info(movie_id)
 
 	movie_info
 end
+
+def get_providers(movie_info, movie_id)
+
+	providers = movie_info["subscription_web_sources"]
+	if providers.length > 0
+		providers.each do |provider|
+			provider = Provider.find_or_create_by(name: provider['source'], url: provider['link'], movie_id: movie_id)
+			provider.save
+		end
+	end
+end
