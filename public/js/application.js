@@ -36,6 +36,17 @@ $(document).ready(function() {
 	});
 
 
+	$('body').on('click', '.new-list', function(event){
+		event.preventDefault();
+		var url = $(this).attr('href');
+		$.ajax({
+			method: "GET",
+			url: url
+		}).done(function(response){
+			$('.list-container').before(response);
+		})
+	});
+
 
 
 });
@@ -46,8 +57,12 @@ $(window).load(function(){
 	    margin:10,
 	    responsiveClass:true,
 	    lazyLoad: true,
-	    loop:true,
+	    slideBy: 3,
+	    loop: true,
 	    stagePadding: 50,
+	    nav: true,
+	    navText: ['<i class="chevron left icon"></i>', '<i class="chevron right icon"></i>'],
+	    dots: false,
 	    responsive:{
 	        0:{
 	            items:1,
@@ -63,8 +78,6 @@ $(window).load(function(){
 	        }
 	    }
 	});
-
-
 
 
 });

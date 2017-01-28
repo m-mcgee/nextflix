@@ -1,17 +1,14 @@
 <% if current_user.id == user.id %>
-	<h1>Welcome, <%= current_username %>!</h1>
+	<div class="profile-header">
+		<h1>Welcome, <%= current_username %>!</h1>
 
-  <h3 class="your-lists">Your lists</h3>
-  <a href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+  	<h3 class="your-lists">Your lists</h3>
+  	<a class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+	</div>
 
   <% if user.lists %>
   	<% user.lists.each do |list| %>
-  		<h4><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
-
-  		<p><%= list.description %></p>
   		<%= erb :'/lists/_show', locals: {list: list} %>
-
-
   	<% end %>
   <% else %>
   	<h4>You have no lists. </h4>
@@ -64,6 +61,7 @@
   	<% user.lists.each do |list| %>
   		<h4><%= list.name %></h4>
   		<p><%= list.description %></p>
+  		<%= erb :'/lists/_show', locals: {list: list} %>
   	<% end %>
   <% else %>
   	<h4><%= user.username %> has no lists. </h4>

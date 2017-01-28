@@ -1,0 +1,12 @@
+<form class="ui form" action="/lists/<%= list.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="list[name]" value="<%= list.name %>">
+  </div>
+  <div class="field">
+    <label>Description</label>
+    <input type="text" name="list[description]" value="<%= list.description %>">
+  </div>
+  <button class="ui button" type="submit">Save</button>
+</form>

@@ -1,3 +1,7 @@
+get '/movies/search' do
+  erb :'/lists/_search', layout: false
+end
+
 get '/movies/new' do
   title = fix_title_spaces(params["movie_search"])
   movies_found = search_for_movies(title)

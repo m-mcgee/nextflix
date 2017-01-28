@@ -1,27 +1,45 @@
-<div class="owl-container">
-	<% count = list.movies.length %>
-	<div data-count=<%= count %> class="owl-carousel">
-	<% list.movies.each do |movie| %>
+<div class="list-container">
+	
+	<div class="list-header">
+		<h4 class="list-name"><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
+		<div class="list-buttons">
+			<% if list.user == current_user %>
+				<a id="new-movie" href="#"><i class="green plus icon" ></i></a>
+				<a href="/lists/<%= list.id %>/edit"><i class="edit icon"></i></a>
+				<form action="/lists/<%= list.id %>" method="post">
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit">
+						<i class="remove icon"></i>
+					</button>
+				</form>
+			<% end %>
 
-		<div class="ui card">
-		  <a class="image" href="/movies/<%= movie.id %>">
-		    <img class="owl-lazy" data-src="<%= movie.img_url %>">
-		  </a>
-			
-
-		  <div class="title-info">
-		  	<h3><%= movie.title %></h3>
-				
-				<div class="providers-info">
-					<% if movie.providers.length > 0 %>
-						<% movie.providers.each do |provider| %>
-							<a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
-						<% end %>
-			  	<% end %>
-				</div>	
-		  </div>
 
 		</div>
-	<% end %>
-</div>
+		<p><%= list.description %></p>
+	</div>
 
+	<div class="owl-container">
+		<% count = list.movies.length %>
+		<div data-count=<%= count %> class="owl-carousel owl-theme">
+		<% list.movies.each do |movie| %>
+
+			<div class="ui card">
+			  <a class="image" href="/movies/<%= movie.id %>">
+			    <img class="owl-lazy" data-src="<%= movie.img_url %>">
+			  </a>
+			  <div class="title-info">
+					<div class="providers-info">
+						<% if movie.providers.length > 0 %>
+							<% movie.providers.each do |provider| %>
+								<% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>
+									<a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
+								<% end %>
+							<% end %>
+				  	<% end %>
+					</div>	
+			  </div>
+			</div>
+		<% end %>
+	</div>
+</div>
