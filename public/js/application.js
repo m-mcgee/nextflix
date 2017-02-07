@@ -1,58 +1,75 @@
 $(document).ready(function() {
 
-	$('body').on('mouseenter mouseleave', '.special.cards .image', function(){
-			$(this).dimmer('toggle');
+	$('#new-list').click(function(e){
+		e.preventDefault();
+		$('#new-form').modal('show')
+			.modal({
+				onApprove : function(){
+					$.ajax({
+						method: "POST", 
+						url: $('#create-form')[0].action,
+						data: $('#create-form').serialize()
+					}).done(function(response){
+						$('.list-container').before(response);
+					})
+				}
 		});
+	});
 
-	$('#movie-search-form').on("submit", function(event){
+
+	$('body').on('click', '#new-movie', function(e){
+		e.preventDefault();
+		var description = $(this).parent().next();
+		var url = this.href;
+		$.ajax({
+			method: "GET", 
+			url: url
+		}).done(function(response){
+			description.append(response);
+			$('#search-form').modal('show')
+		})		
+	})
+
+	$('body').on("submit", '#movie-search-form', function(event){
 		event.preventDefault();
 		var $form = $(this);
 		var formData = $(this).serialize();
 		var url = this.action;
+		var results = $('#search-results')
 		$.ajax({
 			method: "GET",
 			url: url,
 			data: formData
 		}).done(function(response){
-			$('#searched-titles').remove();
-			$form.after(response);
+			results.replaceWith(response);
 		})
 	});
 
-	$('body').on('submit', '#add-movie-form', function(event){
+
+	$('body').on('mouseenter mouseleave', '.special.cards .image', function(){
+		$(this).dimmer('toggle');
+	});
+
+
+	$('body').on('submit', '#add-to-list', function(event){
 		event.preventDefault();
 		var url = this.action;
 		var formData = $(this).serialize();
-		var $form = $(this)
-		var movieGrid = this.closest('#searched-titles')
 		$.ajax({
 			method: "POST",
 			url: url,
 			data: formData
 		}).done(function(response){
-			$(movieGrid).slideUp("slow");
-			$('#list-view').replaceWith(response);
+			debugger;
 		})
 	});
-
-
-	$('body').on('click', '.new-list', function(event){
-		event.preventDefault();
-		var url = $(this).attr('href');
-		$.ajax({
-			method: "GET",
-			url: url
-		}).done(function(response){
-			$('.list-container').before(response);
-		})
-	});
-
 
 
 });
 
-$(window).load(function(){
 
+
+$(window).load(function(){
 	$('.owl-carousel').owlCarousel({
 	    margin:10,
 	    responsiveClass:true,

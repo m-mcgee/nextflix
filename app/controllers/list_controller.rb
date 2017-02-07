@@ -1,12 +1,19 @@
 get '/lists/new' do
-	binding.pry
-	erb :'/lists/new'
+	if request.xhr?
+		erb :'/lists/_new', layout: false
+	else
+		erb :'/lists/new'
+	end
 end
 
 post '/lists' do
 	list = List.new(params[:list])
 	if list.save
-		erb :"/lists/show", locals: {list: list, movies_found: false}
+		if request.xhr?
+			erb :"/lists/_show", locals: {list: list, movies_found: false}, layout: false
+		else
+			erb :"/lists/show", locals: {list: list, movies_found: false}
+		end
 	else
 		@errors = list.errors
 		erb :'/lists/new'

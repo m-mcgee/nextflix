@@ -6,6 +6,9 @@ div.ui.container > div.layout.main.content > div.ui.middle.aligned.center.aligne
     max-width: 450px;
 }
 
+.owl-container {
+  margin-bottom: 40px;
+}
 
 .owl-carousel {
   position: relative;

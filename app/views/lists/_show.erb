@@ -1,10 +1,16 @@
-<div class="list-container">
-	
+<div id="list-<%= list.id %>">	
+
 	<div class="list-header">
 		<h4 class="list-name"><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
 		<div class="list-buttons">
 			<% if list.user == current_user %>
-				<a id="new-movie" href="#"><i class="green plus icon" ></i></a>
+				<a id="new-movie" href="/lists/<%= list.id %>/movies/search"><i class="green plus icon" ></i></a>
+				<% if list.movies.count < 1 %>
+					<div class="ui green left pointing label">
+			      Add a Movie
+			    </div>
+
+				<% end %>
 				<a href="/lists/<%= list.id %>/edit"><i class="edit icon"></i></a>
 				<form action="/lists/<%= list.id %>" method="post">
 					<input type="hidden" name="_method" value="DELETE">
@@ -13,7 +19,6 @@
 					</button>
 				</form>
 			<% end %>
-
 
 		</div>
 		<p><%= list.description %></p>

@@ -3,56 +3,22 @@
 		<h1>Welcome, <%= current_username %>!</h1>
 
   	<h3 class="your-lists">Your lists</h3>
-  	<a class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+  	<a id="new-list" class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+	</div>
+	
+	<%= erb :'/lists/new' %>
+
+	<div class="list-container">
+		
+	  <% if lists %>
+	  	<% lists.each do |list| %>
+	  		<%= erb :'/lists/_show', locals: {list: list} %>
+	  	<% end %>
+	  <% else %>
+	  	<h4>You have no lists. </h4>
+	  <% end %>
 	</div>
 
-  <% if user.lists %>
-  	<% user.lists.each do |list| %>
-  		<%= erb :'/lists/_show', locals: {list: list} %>
-  	<% end %>
-  <% else %>
-  	<h4>You have no lists. </h4>
-  <% end %>
-
-	<form action="/list/<%= current_user.id %>/movies" method="post" class="ui icon input ">
-	  <input type="text" name="movie_search" placeholder="Add a movie...">
-	  <i class="search icon"></i>
-	  <input type="submit" value="Search">
-	</form>
-
-
-	<% if movies_found %>
-
-		<div id="searched-titles" class="ui grid">
-
-			<% movies_found["results"].each do |movie|%>
-			<div class="movie-found four wide column">
-
-					<div class="ui special cards ">
-					  <div class="card">
-					    <div class="blurring dimmable image">
-					      <div class="ui dimmer">
-					        <div class="content">
-
-					          <div data-id="<%= movie["id"] %>" data-url="/users/<%= current_user %>" class="center">
-					            <div class="ui inverted button addlist">Add to list</div>
-					          </div>
-					        </div>
-					      </div>
-					      <img src="<%= movie["poster_400x570"] %>">
-					    </div>
-					    <div class="content">
-					      <a class="header"><%= movie["title"] %></a>
-					      <div class="meta">
-					        <span class="date"><%= movie["release_year"].to_s %></span>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	<% end %>
 
 <% else %>
 	<h1><%= user.username %>'s lists</h1>
@@ -66,8 +32,5 @@
   <% else %>
   	<h4><%= user.username %> has no lists. </h4>
   <% end %>
-
-
-
 
 <% end %>

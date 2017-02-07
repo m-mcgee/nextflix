@@ -1,12 +1,12 @@
-get '/movies/search' do
-  erb :'/lists/_search', layout: false
+get '/lists/:id/movies/search' do
+  erb :'/movies/_search', layout: false, locals: {list: List.find(params[:id]), movies_found: false}
 end
 
 get '/movies/new' do
   title = fix_title_spaces(params["movie_search"])
   movies_found = search_for_movies(title)
   list = List.find(params[:list_id])
-  erb :'/lists/_movies_found', locals: {movies_found: movies_found, list: list}, layout: false
+  erb :'/movies/_movies_found', locals: {movies_found: movies_found, list: list}, layout: false
 end
 
 post '/movies' do
