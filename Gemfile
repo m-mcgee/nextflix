@@ -16,6 +16,7 @@ gem 'rack', '1.5.2'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'netflix_roulette'
+gem 'json'
 
 
 group :test do

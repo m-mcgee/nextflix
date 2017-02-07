@@ -1,0 +1,27 @@
+<div id="search-form" class="ui basic modal">
+	<i class="close icon"></i>
+	<div class="header">
+			<form id="movie-search-form" action="/movies/new" method="get" class="ui icon input ">
+			<input type="hidden" name="list_id" value="<%= list.id %>">
+	  	<input type="text" name="movie_search" placeholder="Add a movie...">
+	  	<i class="search icon"></i>
+	  	<input type="submit" value="Search">
+		</form>
+	</div>
+
+
+
+	<div class="content">
+		<div id="search-results"></div>
+	</div>
+
+
+
+	<div class="actions">
+		<div class="ui button cancel">Cancel</div>
+	</div>
+</div>
+
+
+
+

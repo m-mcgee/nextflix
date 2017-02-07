@@ -1,10 +1,119 @@
-.container {
-  width: 70%;
-  margin: 0 auto;
+html {
+  height: 100%
 }
 
-span.date {
-  /*margin-left: 10px*/;
+div.ui.container > div.layout.main.content > div.ui.middle.aligned.center.aligned.grid > div.column {
+    max-width: 450px;
+}
+
+.owl-container {
+  margin-bottom: 40px;
+}
+
+.owl-carousel {
+  position: relative;
+}
+.owl-carousel .item {
+  position: relative;
+}
+.owl-carousel .item img {
+  position: relative;
+}
+.owl-carousel .item p {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.owl-carousel .owl-controls {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -100%);
+  width: 100%;
+}
+.owl-carousel .owl-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+}
+.owl-carousel .owl-nav .owl-prev, .owl-carousel .owl-nav .owl-prev:hover {
+  position: relative;
+  right: 1%;
+  float: left;
+  background: none;
+}
+.owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-next:hover {
+  position: relative;
+  left: 1%;
+  float: right;
+  background: none;
+}
+
+.owl-carousel .owl-nav .owl-next i, .owl-carousel .owl-nav .owl-prev i {
+  font-size: 2em;
+  color: #AAAAAA;
+}
+
+.owl-carousel .owl-nav .owl-next i:hover, .owl-carousel .owl-nav .owl-prev i:hover {
+  color: #555555;
+}
+
+
+.list-header {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h4.list-name {
+  display: inline;
+}
+
+.list-buttons {
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.list-buttons > a {
+  color: teal;
+}
+
+.list-buttons > form {
+  display: inline;
+}
+
+.list-buttons > form > button {
+  color: red;
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+}
+
+.title-info {
+  height: 32px;
+  margin-top: -32px;
+  z-index: 1;
+  position: relative;
+}
+
+.title-info > .providers-info > a > img.provider {
+  margin-left: 2px;
+  margin-right: 2px;
+  float: right;
+  display: inline;
+  width: 32px;
+  height: 32px;
+  z-index: 4;
+  position: relative;
+}
+
+.title-year {
+  float: right;
 }
 
 nav {
@@ -52,8 +161,9 @@ h3.your-lists {
   display: inline;
 }
 
-a.create-a-list {
-  margin-left: 20px;
+a.new-list i {
+  margin-left: 10px;
+  border-radius: 5px;
 }
 
 h2.list-name-header, h3.list-desc-header {
@@ -64,3 +174,5 @@ div#list-view {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+

@@ -38,8 +38,7 @@ end
 
 get '/users/:id' do
   user = User.find(params[:id])
-  lists = List.where(user_id: current_user.id)
-
+  lists = List.where(user_id: current_user.id).order(created_at: :desc)
   erb :'/users/show', locals: {user: user, lists: lists, movies_found: false}
 end
 
@@ -54,9 +53,4 @@ post '/users/:id' do
   end
 end
 
-post '/list/:list_id/movies' do
-  title = fix_title_spaces(params["movie_search"])
-  movies_found = search_for_movies(title)
 
-  erb :'/users/show', locals: {user: current_user, movies_found: movies_found}
-end

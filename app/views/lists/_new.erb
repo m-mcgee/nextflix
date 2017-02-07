@@ -1,0 +1,12 @@
+<form id="create-list" class="ui form" action="/lists" method="POST">
+  <div class="field">
+    <label>List Name</label>
+    <input type="text" name="list[name]" placeholder="Upcoming releases">
+  </div>
+  <div class="field">
+    <label>Description</label>
+    <input type="text" name="list[description]" placeholder="Movies I missed in theater">
+  </div>
+  <input type="hidden" name="list[user_id]" value="<%= current_user.id %>">
+  <button class="ui button" type="submit">Create List</button>
+</form>
