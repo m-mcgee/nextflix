@@ -27,7 +27,7 @@
 	<div class="owl-container">
 		<% count = list.movies.length %>
 		<div data-count=<%= count %> class="owl-carousel owl-theme">
-		<% list.movies.each do |movie| %>
+		<% list.movies.reverse.each do |movie| %>
 
 			<div class="ui card">
 			  <a class="image" href="/movies/<%= movie.id %>">
@@ -46,5 +46,6 @@
 			  </div>
 			</div>
 		<% end %>
+		</div>
 	</div>
 </div>

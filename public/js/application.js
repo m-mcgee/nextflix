@@ -1,3 +1,38 @@
+function carouselLoader(){
+	$('.owl-carousel').owlCarousel({
+    margin:10,
+    responsiveClass:true,
+    lazyLoad: true,
+    slideBy: 3,
+    loop: true,
+    stagePadding: 50,
+    nav: true,
+    navText: ['<i class="chevron left icon"></i>', '<i class="chevron right icon"></i>'],
+    dots: false,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:true,
+        }
+    }
+	});
+};
+
+
+function resetHeight(){
+	$('body').removeClass('dimmable scrolling dimmed').css({'height': '100%'});
+	$('#search-form').remove();
+};
+
+
 $(document).ready(function() {
 
 	$('#new-list').click(function(e){
@@ -27,6 +62,14 @@ $(document).ready(function() {
 		}).done(function(response){
 			description.append(response);
 			$('#search-form').modal('show')
+				.modal({
+					onDeny : function(){
+						resetHeight();
+					}, 
+					onHide : function(){
+						resetHeight();
+					}
+				})
 		})		
 	})
 
@@ -55,12 +98,16 @@ $(document).ready(function() {
 		event.preventDefault();
 		var url = this.action;
 		var formData = $(this).serialize();
+		var list = "#list-" + this.children[1].value;
 		$.ajax({
 			method: "POST",
 			url: url,
 			data: formData
 		}).done(function(response){
-			debugger;
+			$('#search-form').modal('hide');
+			$(list).replaceWith(response);
+			resetHeight();
+			carouselLoader();
 		})
 	});
 
@@ -68,35 +115,8 @@ $(document).ready(function() {
 });
 
 
-
 $(window).load(function(){
-	$('.owl-carousel').owlCarousel({
-	    margin:10,
-	    responsiveClass:true,
-	    lazyLoad: true,
-	    slideBy: 3,
-	    loop: true,
-	    stagePadding: 50,
-	    nav: true,
-	    navText: ['<i class="chevron left icon"></i>', '<i class="chevron right icon"></i>'],
-	    dots: false,
-	    responsive:{
-	        0:{
-	            items:1,
-	            nav:true
-	        },
-	        600:{
-	            items:3,
-	            nav:false
-	        },
-	        1000:{
-	            items:5,
-	            nav:true,
-	        }
-	    }
-	});
-
-
+	carouselLoader();
 });
 
 
