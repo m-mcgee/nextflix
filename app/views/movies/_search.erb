@@ -1,18 +1,18 @@
-<div id="search-form" class="ui basic modal">
+<div id="search-form" class="ui basic modal search-form">
 	<i class="close icon"></i>
 	<div class="header">
-			<form id="movie-search-form" action="/movies/new" method="get" class="ui icon input ">
+			<form id="movie-search-form" action="/movies/new" method="get" class="ui icon input movie-search-form">
 			<input type="hidden" name="list_id" value="<%= list.id %>">
 	  	<input type="text" name="movie_search" placeholder="Add a movie...">
-	  	<i class="search icon"></i>
-	  	<input type="submit" value="Search">
+	  	
+	  	<button class="search-button ui button" type="submit"><i class="search icon"></i>  Search</button>
 		</form>
 	</div>
 
 
 
 	<div class="content">
-		<div id="search-results"></div>
+		<div class="search-results"></div>
 	</div>
 
 
