@@ -1,4 +1,4 @@
-<div id="list-<%= list.id %>">	
+<div id="list-<%= list.id %>" class="list">	
 
 	<div class="list-header">
 		<h4 class="list-name"><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
@@ -12,12 +12,13 @@
 
 				<% end %>
 				<a href="/lists/<%= list.id %>/edit"><i class="edit icon"></i></a>
-				<form action="/lists/<%= list.id %>" method="post">
+				<form class="delete-list" action="/lists/<%= list.id %>" method="post">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit">
 						<i class="remove icon"></i>
 					</button>
 				</form>
+				<%= erb :'/lists/_confirm_delete', locals: {list: list} %>
 			<% end %>
 
 		</div>
@@ -26,7 +27,12 @@
 
 	<div class="owl-container">
 		<% count = list.movies.length %>
-		<div data-count=<%= count %> class="owl-carousel owl-theme">
+		<% if count < 6 %>
+			<div class="owl-carousel owl-theme small">
+		<% else %>
+			<div class="owl-carousel owl-theme standard">
+		<% end %>
+		
 		<% list.movies.reverse.each do |movie| %>
 
 			<div class="ui card">

@@ -1,12 +1,24 @@
-<form id="create-list" class="ui form" action="/lists" method="POST">
-  <div class="field">
-    <label>List Name</label>
-    <input type="text" name="list[name]" placeholder="Upcoming releases">
+<div id="new-form" class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Create a new List
   </div>
-  <div class="field">
-    <label>Description</label>
-    <input type="text" name="list[description]" placeholder="Movies I missed in theater">
+
+  <form id="create-form" class="ui form" action="/lists" method="POST">
+    <div class="field">
+      <label>Name</label>
+      <input type="text" name="list[name]" placeholder="Upcoming releases">
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <input type="text" name="list[description]" placeholder="Movies I missed in theater">
+    </div>
+    <input type="hidden" name="list[user_id]" value="<%= current_user.id %>">
+    
+  </form>
+
+  <div class="actions">
+    <div class="ui button cancel">Cancel</div>
+    <div id="create-button" class="ui button ok">Create</div>
   </div>
-  <input type="hidden" name="list[user_id]" value="<%= current_user.id %>">
-  <button class="ui button" type="submit">Create List</button>
-</form>
+</div>
