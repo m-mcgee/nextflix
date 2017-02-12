@@ -34,3 +34,26 @@ def get_providers(movie_info, movie_id)
 		end
 	end
 end
+
+def update_movie_info(movie_info)
+	params = {title: movie_info["title"], year: movie_info["release_year"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"], genre: ""}
+	movie_info['genres'].each do |g|
+		params[:genre] += g['title'] + " "
+	end
+	params
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

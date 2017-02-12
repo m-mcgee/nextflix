@@ -10,9 +10,11 @@ get '/movies/new' do
 end
 
 post '/movies' do
-  movie_info = get_movie_info(params[:id])
-  movie = Movie.find_or_initialize_by( guidebox_id: movie_info["id"], title: movie_info["title"], year: movie_info["release_year"], genre: movie_info["genres"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"] )  
   list = List.find(params[:list_id])
+  movie_info = get_movie_info(params[:id])
+  movie = Movie.find_or_initialize_by(guidebox_id: movie_info["id"])  
+  attrs = update_movie_info(movie_info)
+  movie.update_attributes(attrs)
 
   if movie.save
     get_providers(movie_info, movie.id)
@@ -30,5 +32,8 @@ end
 
 
 get '/movies/:id' do
-
+  movie = Movie.find(params[:id])
+  erb :'/movies/_show', locals: {movie: movie}, layout: false
 end
+
+

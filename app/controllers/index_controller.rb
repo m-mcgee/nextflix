@@ -5,3 +5,7 @@ get '/' do
 		erb :'index', :layout => :nouser_layout
 	end
 end
+
+get '/global_search' do
+	binding.pry
+end

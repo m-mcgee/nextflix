@@ -151,6 +151,54 @@ $(document).ready(function() {
 			})
 	});
 
+	$('body').on('click', '.movie-img', function(e){
+		e.preventDefault();
+		var movie = $(this);
+		var url = this.href;
+		$.ajax({
+			method: "GET", 
+			url: url
+		}).done(function(response){
+			$(movie).append(response);
+			$('#movie-show').modal('show');
+			$('.ui.dropdown').dropdown()
+		})
+	});
+
+	$('body').on('click', '.dropdown-item', function(e){
+		e.preventDefault();
+		var form = this.children[0];
+		var data = $(form).serialize();
+		var url = form.action;
+		var listName = form.dataset.listName;
+		var list = "#list-" + form.children[1].value;
+		$.ajax({
+			method: "POST",
+			url: url,
+			data: data
+		}).done(function(response){
+			console.log(response);
+			$('#movie-show').modal('hide');
+			$(list).replaceWith(response);
+			carouselLoader();
+		})
+	});
+
+	$('body').on('click', '.remove-movie', function(e){
+		preventDefault();
+		var url = $(this).data('url');
+		var list = $(this).closest('.list');
+		$.ajax({
+			method: "DELETE", 
+			url: url
+		}).done(function(response){
+			$(list).replaceWith(response);
+			carouselLoader();
+		})
+	})
+
+
+
 
 });
 

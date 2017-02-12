@@ -1,3 +1,4 @@
+
 <div id="list-<%= list.id %>" class="list">	
 
 	<div class="list-header">
@@ -33,16 +34,19 @@
 			<div class="owl-carousel owl-theme standard">
 		<% end %>
 		
-		<% list.movies.reverse.each do |movie| %>
+		<% list.list_movies.reverse.each do |lm| %>
 
 			<div class="ui card">
-			  <a class="image" href="/movies/<%= movie.id %>">
-			    <img class="owl-lazy" data-src="<%= movie.img_url %>">
+			  <a class="image movie-img" href="/movies/<%= lm.movie.id %>">
+			    <img class="owl-lazy" data-src="<%= lm.movie.img_url %>">
 			  </a>
+			  <% if list.user == current_user %>
+			  	<i class="remove icon remove-movie" data-url="/list_movies/<%= lm.id %>" data-list-movie="<%= lm.id %>" ></i>	
+			  <% end %>
 			  <div class="title-info">
 					<div class="providers-info">
-						<% if movie.providers.length > 0 %>
-							<% movie.providers.each do |provider| %>
+						<% if lm.movie.providers.length > 0 %>
+							<% lm.movie.providers.each do |provider| %>
 								<% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>
 									<a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
 								<% end %>

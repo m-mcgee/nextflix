@@ -22,7 +22,8 @@ end
 
 get '/lists/:id' do
 	list = List.find(params[:id])
-	erb :'/lists/show', locals: {list: list}
+	list_movies = list.list_movies
+	erb :'/lists/show', locals: {list: list, list_movies: list_movies}
 end
 
 get '/lists/:id/edit' do
@@ -55,5 +56,12 @@ post '/list/:list_id/movies' do
   erb :'/users/show', locals: {user: current_user, movies_found: movies_found}
 end
 
+delete '/list_movies/:id' do
+  list_movie = ListMovie.find(params[:id])
+  list = list_movie.list
+  list_movie.destroy
+
+  erb :"/lists/_show", locals: {list: list}, layout: false
+end
 
 
