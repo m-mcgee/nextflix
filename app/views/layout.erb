@@ -4,10 +4,9 @@
 
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
-
   <link rel="stylesheet" href="/css/owl/owl.carousel.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/owl/owl.theme.default.min.css">
-
   <link rel="stylesheet" href="/css/application.css">
 
   <title></title>
@@ -19,10 +18,14 @@
       <a class="header item logo" href="/">Nextflix</a>
       <% if current_user %>
         <div class="item">
-          <div class="ui icon input">
-            <input class="global-search" type="text" placeholder="Search..." href="">
-            <i class="search icon global"></i>
-          </div>
+
+<div class="ui category search">
+  <div class="ui icon input">
+    <input class="prompt" type="text" placeholder="Search Nextflix...">
+    <i class="search icon"></i>
+  </div>
+  <div class="results"></div>
+</div>
         </div>   
       <% end %>   
       <div class="right menu">
@@ -52,7 +55,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
   <script src="/js/owl/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="/js/application.js"></script>
+
 
 </body>
 </html>

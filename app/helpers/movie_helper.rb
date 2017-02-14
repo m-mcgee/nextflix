@@ -20,7 +20,7 @@ def get_movie_info(movie_id)
 	uri = URI(url)
 	response = Net::HTTP.get(uri)
 	movie_info = JSON.parse(response)
-
+	searchNetflix(movie_info)
 	movie_info
 end
 
@@ -33,6 +33,15 @@ def get_providers(movie_info, movie_id)
 			provider.save
 		end
 	end
+end
+
+def searchNetflix(movie_info)
+	title = movie_info['title'].gsub(/[^\w\s]/,"").gsub(/\s/,'+')
+	director = movie_info['directors'][0]['name'].gsub(/[^\w\s]/,"").gsub(/\s/,'+')
+	#scrape this to pull netflix movies
+	url =  "http://instantwatcher.com/search?content_type=1&source=1+2+3&q=#{title}+#{director}&year=#{movie_info['release_year']}"
+	data = Nokogiri::HTML(open(url))
+	binding.pry
 end
 
 def update_movie_info(movie_info)

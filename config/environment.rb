@@ -19,6 +19,7 @@ require 'bcrypt'
 require 'net/http'
 require 'netflix_roulette'
 require 'json'
+require 'nokogiri'
 
 
 require 'sinatra'

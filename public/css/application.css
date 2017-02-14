@@ -200,3 +200,8 @@ div#list-view {
   left: 0;
   color: red;
 }
+
+.user {
+  color: red;
+  float: right;
+}

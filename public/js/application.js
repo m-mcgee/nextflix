@@ -197,7 +197,60 @@ $(document).ready(function() {
 		})
 	})
 
+// $('.ui.search')
+//   .search({
 
+//     apiSettings: {
+//       action: 'search', url: '/global_search?q={query}'
+//     },
+//     fields: {
+//       results : 'items',
+//       // title   : 'title',
+//       url     : 'url'
+//     },
+//     minCharacters : 3
+//   });
+
+$('.ui.search')
+  .search({
+    type          : 'category',
+    minCharacters : 3,
+    apiSettings   : {
+      onResponse: function(searchResponse) {
+        var
+          response = {
+            results : {}
+          }
+        ;
+        // translate response to work with search
+        $.each(searchResponse.items, function(index, item) {
+          var
+            name   = item.name || 'Unknown',
+            maxResults = 8
+          ;
+          if(index >= maxResults) {
+            return false;
+          }
+          // create new language category
+          if(response.results[name] === undefined) {
+            response.results[name] = {
+              name    : name,
+              results : []
+            };
+          }
+          // add result to category
+          response.results[name].results.push({
+            title       : item.name,
+            description : item.description,
+            url         : item.html_url
+          });
+        });
+        return response;
+      },
+      url: '/global_search?q={query}'
+    }
+  })
+;
 
 
 });
