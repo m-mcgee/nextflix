@@ -1,0 +1,39 @@
+<div id="movie-show" class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <%= movie.title %>   - <span>(<%= movie.year %>)</span>
+    <p class="genre"><%= movie.genre.strip.gsub(/\s/,", ") %></p>
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="<%= movie.img_url %>">
+    </div>
+    <div class="description">
+      <div class="ui header"></div>
+      <p><%= movie.overview %></p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui selection dropdown right labeled icon">
+    <i class="plus icon"></i>
+      <input type="hidden" name="user">
+      <i class="dropdown icon"></i>
+      <div class="default text">Add to List</div>
+      <div class="menu">
+        <% current_user.lists.each do |list| %>
+          <div class="item dropdown-item" href="/movies">
+            <%= list.name %>
+            <form class="dropdown-add" action="/movies" method="POST" data-list-name="<%= list.name %>" data-movie-title="<%= movie.title %>">
+              <input type="hidden" name="id" value="<%= movie.guidebox_id %>">
+              <input type="hidden" name="list_id" value="<%= list.id %>">
+            </form>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

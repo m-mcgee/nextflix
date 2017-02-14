@@ -182,3 +182,26 @@ div#list-view {
   font-size: 2em;
 }
 
+#movie-show > .content > .description {
+  max-width: 60%;
+}
+
+#movie-show > .header > p.genre, #movie-show > .header > span {
+  font-size: .7em;
+}
+
+#movie-show > .content {
+  padding-top: 0;
+}
+
+.remove-movie {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: red;
+}
+
+.user {
+  color: red;
+  float: right;
+}
