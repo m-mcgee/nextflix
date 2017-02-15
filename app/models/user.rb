@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :users_lists
   has_many :followed_lists, through: :lists_users, source: :list
+  has_many :user_followers
+  has_many :followers, through: :user_followers, source: :follower
 
   validates :email, presence: true, uniqueness: true 
   validates :username, presence: true, uniqueness: true 
