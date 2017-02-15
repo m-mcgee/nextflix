@@ -36,7 +36,7 @@
 		
 		<% list.list_movies.reverse.each do |lm| %>
 
-			<div class="ui card">
+			<div class="ui link card">
 			  <a class="image movie-img" href="/movies/<%= lm.movie.id %>">
 			    <img class="owl-lazy" data-src="<%= lm.movie.img_url %>">
 			  </a>

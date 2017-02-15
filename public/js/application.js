@@ -16,11 +16,15 @@ function carouselLoader(){
         },
         600:{
             items:3,
-            nav:false
+            nav:true
         },
         1000:{
             items:5,
-            nav:true,
+            nav:true
+        },
+        1500:{
+        	items: 7,
+        	nav:true
         }
     }
 	});
@@ -39,11 +43,15 @@ function carouselLoader(){
         },
         600:{
             items:3,
-            nav:false
+            nav:true
         },
         1000:{
             items:5,
-            nav:true,
+            nav:true
+        },
+        1500:{
+        	items: 7,
+        	nav:true
         }
     }
 	});

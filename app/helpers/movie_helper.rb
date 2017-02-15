@@ -49,22 +49,28 @@ end
 def search_netflix(movie_info, movie_id)
 	netflix_stream = scrape_instant_watcher(movie_info)
 	if netflix_stream
-		provider = Provider.find_or_initialize_by(name: "netflix", movie_id: movie_id)
-		provider.update_attributes(url: netflix_stream)
-		provider.save	
+		provider = Provider.create(name: "netflix", movie_id: movie_id, url: netflix_stream)
 	end
 end
 
 def scrape_instant_watcher(movie_info)
-	title = movie_info['title'].gsub(/[^\w\s]/,"").gsub(/\s/,'+')
+	title = movie_info['title'].gsub(/\s/,'+')
 	url =  "http://instantwatcher.com/search?content_type=1&source=1+2+3&q=#{title}&year=#{movie_info['release_year']}"
 	data = Nokogiri::HTML(open(url))
 	netflix_title = data.at_css('.netflix-title')
-	if !netflix_title.nil?
+	if !netflix_title.nil? && verify_title(movie_info, netflix_title)
 		netflix_stream = netflix_title.at_css('.webpage').attributes['href'].value
 		netflix_stream
 	end
 end
+
+def verify_title(movie_info, netflix_title)
+	if movie_info['directors'][0]['name'] == netflix_title.at_css('.directors').text[5..-1] || (movie_info['duration']/60 - netflix_title.at_css('.runtime').text[0..2].to_i).abs < 2 
+		return true
+	end
+	return false
+end
+
 
 
 
