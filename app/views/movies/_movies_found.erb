@@ -1,35 +1,40 @@
-<% if movies_found %>
+<% if movies_found['total_results'] > 0 %>
 
   <div id="search-results" class="ui grid search-results">
     <% movies_found["results"].each do |movie|%>
-      <div class="movie-found four wide column">
+      <% if movie["poster_400x570"] == "http://static-api.guidebox.com/misc/default_movie_400x570.jpg" %>
+        <% next %>
+      <% else %>
 
-          <div class="ui special cards ">
-            <div class="card">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
+        <div class="movie-found four wide column">
 
-                    <form id="add-to-list" action="/movies" method="POST">
-                      <input type="hidden" name="id" value="<%= movie["id"] %>">
-                      <input type="hidden" name="list_id" value="<%= list.id %>">
+            <div class="ui special cards ">
+              <div class="card">
+                <div class="blurring dimmable image">
+                  <div class="ui dimmer">
+                    <div class="content">
 
-                      <input class="ui inverted button addlist" type="submit" value="Add to List">
-                    </form>
+                      <form id="add-to-list" action="/movies" method="POST">
+                        <input type="hidden" name="id" value="<%= movie["id"] %>">
+                        <input type="hidden" name="list_id" value="<%= list.id %>">
 
+                        <input class="ui inverted button addlist" type="submit" value="Add to List">
+                      </form>
+
+                    </div>
                   </div>
+                  <img src="<%= movie["poster_400x570"] %>">
                 </div>
-                <img src="<%= movie["poster_400x570"] %>">
-              </div>
-              <div class="content">
-                <a class="header"><%= movie["title"] %></a>
-                <div class="meta">
-                  <span class="date"><%= movie["release_year"].to_s %></span>
+                <div class="content">
+                  <a class="header"><%= movie["title"] %></a>
+                  <div class="meta">
+                    <span class="date"><%= movie["release_year"].to_s %></span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-      </div>
+        </div>
+      <% end %>
     <% end %>
 <% else %>
   <div id="search-results">

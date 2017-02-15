@@ -1,3 +1,26 @@
+body {
+  /*background-color: #141414;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ui.container {
+  width: 90%;
+}
+
+.list-container {
+  margin-bottom: 20px;
+}
+
+.list-container > .list {
+  margin: 2.5px 0;
+}
+
+.list-header > h4 {
+  font-size: 1.4em;
+}
 
 div.ui.container > div.layout.main.content > div.ui.middle.aligned.center.aligned.grid > div.column {
     max-width: 450px;
@@ -5,7 +28,7 @@ div.ui.container > div.layout.main.content > div.ui.middle.aligned.center.aligne
 
 .owl-container {
   margin: 0 auto;
-  margin-bottom: 40px;
+/*  margin-bottom: 20px;*/
   width: 92%;
 }
 
@@ -79,8 +102,12 @@ h4.list-name {
   display: inline-block;
 }
 
-.list-buttons > a {
-  color: teal;
+.list-buttons > i:hover {
+  
+}
+
+.list-buttons > a:hover, form:hover {
+  font-size: 1.2em;
 }
 
 .list-buttons > form {
@@ -96,6 +123,7 @@ h4.list-name {
   cursor: pointer;
 }
 
+
 .title-info {
   height: 32px;
   margin-top: -32px;
@@ -108,10 +136,15 @@ h4.list-name {
   margin-right: 2px;
   float: right;
   display: inline;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   z-index: 4;
   position: relative;
+}
+
+.title-info > .providers-info > a > img.provider:hover {
+  width: 2.4em;
+  height: 2.4em;
 }
 
 .title-year {
@@ -194,11 +227,24 @@ div#list-view {
   padding-top: 0;
 }
 
+.ui.link.card {
+  margin-top: 3.5px;
+  margin-bottom: 3px;
+  /*if going with black theme*/
+  /*box-shadow: none;*/
+}
+
 .remove-movie {
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
   color: red;
+}
+
+.remove-movie:hover {
+  transition: font-size 0.2s ease;
+  font-size: 1.4em;
 }
 
 .user {
