@@ -206,6 +206,37 @@ $(document).ready(function() {
 	})
 
 
+	$('body').on('click', '#follow-user', function(e){
+		e.preventDefault();
+		var button = this;
+		var user = $(this).data('user-id')
+		var url = "/users/" + user + "/follow"
+		$.ajax({
+			method: "POST", 
+			url: url
+		}).done(function(response){
+			$('.follower-count').text(JSON.parse(response).followers.toString() + ' Followers')
+			$(button).removeClass('blue').addClass('basic').text('Following');
+			$(button).attr('id', 'unfollow-user');
+		})
+	});
+
+	$('body').on('click', '#unfollow-user', function(e){
+		e.preventDefault();
+		var button = this;
+		var user = $(this).data('user-id')
+		var url = "/users/" + user + "/unfollow"
+		$.ajax({
+			method: "POST", 
+			url: url
+		}).done(function(response){
+			$('.follower-count').text(JSON.parse(response).followers.toString() + ' Followers')
+			$(button).removeClass('basic').addClass('blue').text('Follow');
+			$(button).attr('id', 'follow-user');
+		})
+	});
+
+
 	$('.ui.search')
 	  .search({
 	    type          : 'category',
@@ -246,6 +277,7 @@ $(document).ready(function() {
 	    }
 	  })
 	;
+
 
 
 });

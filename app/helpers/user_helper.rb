@@ -8,4 +8,3 @@ def current_username
   current_user.username
 end
 
-

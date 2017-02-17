@@ -24,7 +24,7 @@ post '/login' do
   user = User.find_by_email(params[:email])
   if user && user.auth(params[:password])
     session[:user] = user.id
-    erb :'index'
+    redirect '/'
   else
     @errors = "Invalid Username/Password Combination"
     erb :'login'
@@ -38,7 +38,7 @@ end
 
 get '/users/:id' do
   user = User.find(params[:id])
-  lists = List.where(user_id: current_user.id).order(created_at: :desc)
+  lists = List.where(user_id: user.id).order(created_at: :desc)
   erb :'/users/show', locals: {user: user, lists: lists, movies_found: false}
 end
 
@@ -51,6 +51,19 @@ post '/users/:id' do
   else
     puts "nope<<<<<<<<<<<"
   end
+end
+
+
+post '/users/:id/follow' do
+  UserFollower.create(user_id: params[:id], follower_id: current_user.id)
+  follower_count = User.find(params[:id]).followers.count
+  {'followers': follower_count, 'url': "/users/#{params[:id]}/unfollow" }.to_json
+end
+
+post '/users/:id/unfollow' do
+  UserFollower.find_by(user_id: params[:id], follower_id: current_user.id).destroy
+  follower_count = User.find(params[:id]).followers.count
+  {'followers': follower_count }.to_json
 end
 
 

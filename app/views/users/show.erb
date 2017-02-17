@@ -1,12 +1,12 @@
-<% if current_user.id == user.id %>
-	<div class="profile-header">
-		<h1>Welcome, <%= current_username %>!</h1>
+<%= erb :'/users/_profile_header', locals: {user: user} %>
 
+<% if current_user == user  %>
+	
   	<h3 class="your-lists">Your lists</h3>
   	<a id="new-list" class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
-	</div>
-	
-	<%= erb :'/lists/_new' %>
+  	<%= erb :'/lists/_new' %>
+
+<% end %>
 
 	<div class="list-container">
 		
@@ -18,17 +18,3 @@
 	  	<h4>You have no lists. </h4>
 	  <% end %>
 	</div>
-
-
-<% else %>
-	<h1><%= user.username %>'s lists</h1>
-
-	<% if user.lists %>
-  	<% user.lists.each do |list| %>
-  		<%= erb :'/lists/_show', locals: {list: list} %>
-  	<% end %>
-  <% else %>
-  	<h4><%= user.username %> has no lists. </h4>
-  <% end %>
-
-<% end %>

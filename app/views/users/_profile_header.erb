@@ -1,0 +1,19 @@
+<div class="ui padded segment">
+
+	<div class="profile-header">
+ 	<% if current_user.id == user.id %>
+		<h1>Welcome, <%= current_username %>!</h1>
+		<h2>add edit profile button</h2>
+	<% else %>
+		<h1><%= user.username %>'s lists</h1>
+	<% if !current_user.is_following?(user) %>	
+		<button id="follow-user" class="ui blue button" data-user-id="<%= user.id %>">Follow</button>
+	<% else %>
+		<button id="unfollow-user" class="ui basic button" data-user-id="<%= user.id %>">Following</button>
+	<% end %>
+	<% end %>
+		<h4 class='follower-count'><%= user.followers.count %> Followers</h4>
+		<h4 class='following-count'><%= user.following.count %> Following</h4>
+
+	</div>
+</div>

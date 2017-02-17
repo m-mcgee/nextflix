@@ -2,8 +2,15 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :users_lists
   has_many :followed_lists, through: :lists_users, source: :list
-  has_many :user_followers
-  has_many :followers, through: :user_followers, source: :follower
+
+  has_many :active_relationships,  class_name:  "UserFollower",
+                                   foreign_key: "follower_id",
+                                   dependent:   :destroy
+  has_many :passive_relationships, class_name:  "UserFollower",
+                                   foreign_key: "user_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   validates :email, presence: true, uniqueness: true 
   validates :username, presence: true, uniqueness: true 
@@ -21,4 +28,9 @@ class User < ActiveRecord::Base
     self.password == password
   end
 
+  def is_following?(user)
+    self.following.include?(user)
+  end
+
+ 
 end
