@@ -9,7 +9,7 @@ post '/users' do
   if user.save
     @user = user
     session[:user] = user.id
-    erb :'index'
+    redirect '/'
   elsif user.errors
     @errors = user.errors
     erb :'/users/new'

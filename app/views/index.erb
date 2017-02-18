@@ -1,16 +1,12 @@
 
 <h2>This be da index/homepage</h2>
 
-<% if current_user && new_lists.any? %>
-	<% new_lists.each do |list| %>
-		
-		<%= erb :'/lists/_show', locals: {list: list} %>
-		
-	<% end %>
-
-	<% if new_movies.any? %>
-		<% new_movies.each do |lm| %>
-			<%= lm.movie.title %>
+<% if current_user && updates.any? %>
+	<% updates.each do |update| %>
+		<% if update.class == List %>
+			<%= erb :'/lists/_show', locals: {list: update} %>
+		<% else %>
+			<h2><%= update.movie.title %></h2>
 		<% end %>
 	<% end %>
 
