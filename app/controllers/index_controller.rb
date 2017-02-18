@@ -1,11 +1,6 @@
 get '/' do
 	if current_user 
-		new_lists = List.joins("JOIN user_followers ON lists.user_id = user_followers.user_id WHERE user_followers.follower_id = #{current_user.id}").distinct.order(:created_at).reverse_order
-		new_movies = ListMovie.joins("JOIN lists ON lists.id = list_movies.list_id JOIN user_followers on lists.user_id = user_followers.user_id WHERE user_followers.follower_id = #{current_user.id}").distinct.includes(:movie)
-		#NEED TO ADD TIME STAMPS COLUMN TO ALL MIGRATIONS
-  	new_follows = UserFollower.joins("JOIN")
-
-  	erb :'index', locals: {new_lists: new_lists, new_movies: new_movies }
+  	erb :'index', locals: {updates: get_updates}
 	else
 		erb :'index', :layout => :nouser_layout
 	end
