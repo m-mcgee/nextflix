@@ -11,9 +11,24 @@
     <div class="description">
       <div class="ui header"></div>
       <p><%= movie.overview %></p>
+
+    
+      <div class="title-info update">
+        <div class="providers-info">
+          <% if movie.providers.length > 0 %>
+            <% movie.providers.each do |provider| %>
+              <% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>
+                <a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>  
+      </div>
+
     </div>
   </div>
   <div class="actions">
+
     <div class="ui selection dropdown right labeled icon">
     <i class="plus icon"></i>
       <input type="hidden" name="user">

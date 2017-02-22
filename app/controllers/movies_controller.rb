@@ -15,7 +15,6 @@ post '/movies' do
   movie = Movie.find_or_initialize_by(guidebox_id: movie_info["id"])  
   attrs = update_movie_info(movie_info)
   movie.update_attributes(attrs)
-
   if movie.save
     get_providers(movie_info, movie.id)
     lm = ListMovie.find_or_create_by(list_id: list.id, movie_id: movie.id)

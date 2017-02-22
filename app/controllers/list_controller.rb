@@ -23,7 +23,11 @@ end
 get '/lists/:id' do
 	list = List.find(params[:id])
 	list_movies = list.list_movies
-	erb :'/lists/show', locals: {list: list, list_movies: list_movies}
+	if request.xhr?
+		erb :'/lists/_show', locals: {list: list, list_movies: list_movies}, layout: false
+	else
+		erb :'/lists/show', locals: {list: list, list_movies: list_movies}
+	end
 end
 
 get '/lists/:id/edit' do
