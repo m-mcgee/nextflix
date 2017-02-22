@@ -15,6 +15,6 @@ def get_updates
 
 	updates = []
 	new_lists.each { |list| updates << list}
-	new_movies.each { |lm| lm.created_at - lm.list.created_at > 15 ? updates << lm : next }
+	new_movies.each { |lm| lm.created_at - lm.list.created_at > 5.minutes ? updates << lm : next }
 	updates = updates.sort_by {|u| u.created_at}.reverse
 end

@@ -1,13 +1,12 @@
-
-<h2>This be da index/homepage</h2>
-
 <% if current_user && updates.any? %>
-	<% updates.each do |update| %>
-		<% if update.class == List %>
-			<%= erb :'/lists/_show', locals: {list: update} %>
-		<% else %>
-			<h2><%= update.movie.title %></h2>
-		<% end %>
-	<% end %>
+
+	<%= erb :'/updates/_show', locals: {updates: updates} %>
 
 <% end %>
+
+
+<div class="update-content">
+	<i class="remove icon"></i>
+	<div class="list">
+	</div>
+</div>

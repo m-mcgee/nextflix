@@ -20,7 +20,7 @@ require 'net/http'
 require 'netflix_roulette'
 require 'json'
 require 'nokogiri'
-
+require 'time'
 
 require 'sinatra'
 require "sinatra/reloader" if development?

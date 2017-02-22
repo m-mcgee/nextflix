@@ -142,6 +142,21 @@ h4.list-name {
   position: relative;
 }
 
+.update-info {
+  margin: 5px;
+}
+
+.update-info > .list-info > h4, .update-info > .movie-info > h4  {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.title-info.update > .providers-info > a > img.provider {
+  float: left;
+  margin-top: 32px;
+  margin-left: 0px;
+}
+
 .title-info > .providers-info > a > img.provider:hover {
   width: 2.4em;
   height: 2.4em;
@@ -251,3 +266,31 @@ div#list-view {
   color: red;
   float: right;
 }
+
+.owl-item.active.center {
+  box-sizing: border-box;
+}
+
+.owl-item.active.center > .card {
+  border: solid 3px #545454;
+  max-width: 20em;
+  zoom: 120%;
+  z-index: 10;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+
+}
+
+
+.update-content {
+  margin: 50px 0;
+}
+
+.update-content > i:hover {
+  cursor: pointer;
+}
+/*.ui.link.card > .update-list-img > .update-img {
+  top: 200px;
+  width: 280px;
+  height: 160px;
+  object-fit: cover;
+}*/
