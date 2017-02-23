@@ -330,14 +330,32 @@ $(document).ready(function() {
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 	})
 
+	$('body').on('click', '.list-follow-buttons > .button > .button', function(e){
+		e.preventDefault();
+		var button = this.closest('.list-follow-buttons');
+		var url = this.dataset.url
+		$.ajax({
+			url: url,
+			method: 'POST'
+		}).done(function(response){
+			$(button).replaceWith(response);
+		})
+	})
+
+	$('body').on('click', '.followed-lists .list-follow-buttons .button .button', function(){
+		$(this).closest('.list').hide();
+	})
 
 	$("time.timeago").timeago();
+
+
 
 });
 
 
 $(window).load(function(){
 	carouselLoader();
+	$('.pointing.menu .item').tab();
 });
 
 

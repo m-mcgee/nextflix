@@ -10,7 +10,6 @@
 					<div class="ui green left pointing label">
 			      Add a Movie
 			    </div>
-
 				<% end %>
 				<a href="/lists/<%= list.id %>/edit"><i class="edit icon"></i></a>
 				<form class="delete-list" action="/lists/<%= list.id %>" method="post">
@@ -18,8 +17,24 @@
 					<button type="submit">
 						<i class="remove icon"></i>
 					</button>
-				</form>
+				</form>	
 				<%= erb :'/lists/_confirm_delete', locals: {list: list} %>
+
+
+				<div class="compact medium ui labeled button" tabindex="0" >
+				  <div class="compact ui blue button follow-list" >
+				    <div class="visible content">Followers</div>
+				  </div>
+				  <a class="compact ui basic left pointing blue label">
+				    <%= list.followers.count %>
+				  </a>
+				</div>
+			<% else %>
+				<% if current_user.followed_lists.include?(list) %>
+					<%= erb :'/lists/_unfollow', locals: {list: list} %>
+				<% else %>
+					<%= erb :'/lists/_follow', locals: {list: list} %>	
+				<% end %>
 			<% end %>
 
 		</div>
@@ -28,7 +43,7 @@
 
 	<div class="owl-container">
 		<% count = list.movies.length %>
-		<% if count < 6 %>
+		<% if count < 8 %>
 			<div class="owl-carousel owl-theme small">
 		<% else %>
 			<div class="owl-carousel owl-theme standard">

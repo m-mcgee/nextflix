@@ -1,0 +1,9 @@
+<div class="list-container">
+  <% if lists %>
+  	<% lists.each do |list| %>
+  		<%= erb :'/lists/_show', locals: {list: list} %>
+  	<% end %>
+  <% else %>
+  	<h4>You have no lists. </h4>
+  <% end %>
+</div>
