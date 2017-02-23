@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :lists
-  has_many :users_lists
-  has_many :followed_lists, through: :lists_users, source: :list
+  has_many :list_followers
+  has_many :followed_lists, through: :list_followers, source: :list
 
   has_many :active_relationships,  class_name:  "UserFollower",
                                    foreign_key: "follower_id",

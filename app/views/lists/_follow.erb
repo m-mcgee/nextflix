@@ -1,0 +1,11 @@
+<div class="list-follow-buttons">
+	<div class="compact medium ui labeled button" tabindex="0" >
+	  <div class="compact ui blue animated button follow-list" data-url="/lists/<%= list.id %>/follow">
+	    <div class="visible content">Followers</div>
+	    <div class="hidden content"><i class="Star icon"></i>Follow</div>
+	  </div>
+	  <a class="compact ui basic left pointing blue label">
+	    <%= list.followers.count %>
+	  </a>
+	</div>
+</div>

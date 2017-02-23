@@ -1,6 +1,6 @@
-class CreateListsUsers < ActiveRecord::Migration
+class CreateListsFollowers < ActiveRecord::Migration
   def change
-  	create_table :lists_users do |t|
+  	create_table :list_followers do |t|
   		t.integer :list_id, null: false
   		t.integer :user_id, null: false
 

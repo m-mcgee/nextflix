@@ -68,4 +68,17 @@ delete '/list_movies/:id' do
   erb :"/lists/_show", locals: {list: list}, layout: false
 end
 
+post '/lists/:id/follow' do
+	list = List.find(params[:id])
+	ListFollower.create(list_id: list.id, user_id: current_user.id)
+	erb :'/lists/_unfollow', locals: {list: list}, layout: false
+end
+
+post '/lists/:id/unfollow' do
+	list = List.find(params[:id])
+	followed_list = ListFollower.find_by(list_id: list.id, user_id: current_user.id)
+	followed_list.destroy
+	erb :'/lists/_follow', locals: {list: list}, layout: false
+end
+
 

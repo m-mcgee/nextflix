@@ -2,19 +2,18 @@
 
 <% if current_user == user  %>
 	
-  	<h3 class="your-lists">Your lists</h3>
-  	<a id="new-list" class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
-  	<%= erb :'/lists/_new' %>
-
-<% end %>
-
-	<div class="list-container">
-		
-	  <% if lists %>
-	  	<% lists.each do |list| %>
-	  		<%= erb :'/lists/_show', locals: {list: list} %>
-	  	<% end %>
-	  <% else %>
-	  	<h4>You have no lists. </h4>
-	  <% end %>
+	<div class="ui pointing secondary menu">
+	  <div class="active item" data-tab="my-lists">Your Lists <a id="new-list" class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+	  	<%= erb :'/lists/_new' %></div>
+	  <div class="item" data-tab="lists-followed">Favorites</div>
 	</div>
+	<div class="ui active tab " data-tab="my-lists">
+	  <%= erb :'/lists/_my_lists', locals: {lists: lists} %>
+	</div>
+	<div class="ui tab" data-tab="lists-followed">
+	  <%= erb :'/lists/_followed_lists', locals: {lists: current_user.followed_lists} %>
+	</div>
+
+<% else %>
+	<%= erb :'/lists/_my_lists', locals: {lists: lists} %>
+<% end %>
