@@ -346,6 +346,24 @@ $(document).ready(function() {
 		$(this).closest('.list').hide();
 	})
 
+	$('.list-stats').click(function() {
+    $('html, body').animate({
+        scrollTop: $(".list-container").offset().top
+    }, 1000);
+	});
+
+	$('.follow-stats').click(function(){
+		var url = this.dataset.url
+		debugger;
+		$.ajax({
+			url: url,
+			method: 'GET'
+		}).done(function(response){
+			$('.follow-stats-view').replaceWith(response);
+			$('.follow-stats-view').modal('show')
+		})
+	});
+
 	$("time.timeago").timeago();
 
 

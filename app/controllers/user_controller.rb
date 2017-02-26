@@ -44,7 +44,6 @@ end
 
 
 post '/users/:id' do
-
   if request.xhr?
     movie_id = params.keys[0]
     movie_info = get_movie_info(movie_id)
@@ -66,4 +65,10 @@ post '/users/:id/unfollow' do
   {'followers': follower_count }.to_json
 end
 
+get '/users/:id/followers' do
+  erb :'/users/_followers', locals: {user: User.find(params[:id])}, layout: false
+end
 
+get '/users/:id/following' do
+  erb :'/users/_following', locals: {user: User.find(params[:id])}, layout: false
+end

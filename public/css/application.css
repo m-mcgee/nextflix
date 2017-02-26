@@ -203,6 +203,26 @@ p .errors {
   display: inline-block;
 }
 
+.profile-header h1, h2 {
+  display: inline-block;
+  margin: 0;
+}
+
+
+.profile-header > .user-stats > div {
+  margin: 0 20px;
+  padding: 0;
+}
+
+.user-stats div h4, .user-stats div span {
+  font-size: 2.8vm;   /* IE9 */
+  font-size: 2.8vmin;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+  padding: 0;
+}
+
 div.container > div.layout.main.content {
   margin-top: 100px;
 }
@@ -236,6 +256,7 @@ div#list-view {
 
 #movie-show > .header > p.genre, #movie-show > .header > span {
   font-size: .7em;
+  text-align: default;
 }
 
 #movie-show > .content {
@@ -271,13 +292,16 @@ div#list-view {
   box-sizing: border-box;
 }
 
+.owl-item {
+  margin: 0 auto;
+}
+
 .owl-item.active.center > .card {
   border: solid 3px #545454;
   max-width: 20em;
   zoom: 120%;
   z-index: 10;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-
 }
 
 
