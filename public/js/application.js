@@ -366,6 +366,14 @@ $(document).ready(function() {
 
 	$("time.timeago").timeago();
 
+	setInterval(function() {
+		console.log('fired timer')
+	  $.ajax({
+	    type: 'POST',
+	    url: '/movies/pulse'
+	  });
+	}, 10000);
+	
 
 
 });
