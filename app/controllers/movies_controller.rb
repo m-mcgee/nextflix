@@ -30,9 +30,24 @@ post '/movies' do
 end
 
 
+post '/movies/pulse' do
+  refresh_rate = Date.today - 5
+  oldest_providers = Provider.order(updated_at: 'asc').where("updated_at < ?", refresh_rate).limit(1)
+  oldest_providers.each do |p| 
+    movie = p.movie
+    movie_info = get_movie_info(movie.guidebox_id)
+    attrs = update_movie_info(movie_info)
+    movie.update_attributes(attrs)
+    if movie.save
+      get_providers(movie_info, movie.id)
+    end
+  end
+end
+
 get '/movies/:id' do
   movie = Movie.find(params[:id])
   erb :'/movies/_show', locals: {movie: movie}, layout: false
 end
+
 
 

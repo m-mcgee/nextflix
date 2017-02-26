@@ -25,6 +25,12 @@ end
 
 def update_movie_info(movie_info)
 	params = {title: movie_info["title"], year: movie_info["release_year"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"], genre: ""}
+	
+	url = "https://api.themoviedb.org/3/find/#{movie_info['imdb']}?api_key=f5cb893b797de0d40de812636384ca68&language=en-US&external_source=imdb_id&append_to_response=images"
+	uri = URI(url)
+	response = Net::HTTP.get(uri)
+	tmdb = JSON.parse(response)
+
 	movie_info['genres'].each do |g|
 		params[:genre] += g['title'] + " "
 	end
