@@ -23,17 +23,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 div.ui.container > div.layout.main.content > div.ui.middle.aligned.center.aligned.grid > div.column {
-    max-width: 450px;
+  max-width: 450px;
 }
 
 .owl-container {
   margin: 0 auto;
 /*  margin-bottom: 20px;*/
-  width: 92%;
+  width: 100%;
+}
+
+.owl-container.list {
+  margin-top: -70px;
 }
 
 .owl-carousel {
   position: relative;
+  width: 100%;
 }
 .owl-carousel .item {
   position: relative;
@@ -124,6 +129,28 @@ h4.list-name {
 }
 
 
+.list-jumbotron {
+  background-color: orange;
+  width: 125%;
+  margin-left: -10%;
+}
+
+.list-jumbotron .ui.centered.backdrop {
+  max-height: 500px;
+  object-fit: cover;
+  /*object-position: 0 30%;*/
+}
+
+.list-jumbotron::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 90%);
+  margin-top: -100px;
+  height: 100px;
+  width: 100%;
+  content: '';
+}
+
 .title-info {
   height: 32px;
   margin-top: -32px;
@@ -131,20 +158,42 @@ h4.list-name {
   position: relative;
 }
 
+.title-info.list {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.title-info.list .movie-title {
+  margin-left: 5px;
+  width: 90%;
+  color: white;
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+.title-info > .providers-info {
+  margin-top: -3%;
+}
+
+.title-info > .providers-info.list {
+  margin-top: -12%;
+}
+
 .title-info > .providers-info > a > img.provider {
   margin-left: 2px;
   margin-right: 2px;
   float: right;
   display: inline;
-  width: 28px;
-  height: 28px;
+  width: 12%;
+  height: 12%;
   z-index: 4;
   position: relative;
 }
 
-.update-info {
-  margin: 5px;
+.title-info > .providers-info > a > img.provider.list {
+  display: inline-block;
+  vertical-align: middle;
 }
+
 
 .update-info > .list-info > h4, .update-info > .movie-info > h4  {
   margin-top: 0px;
@@ -153,14 +202,20 @@ h4.list-name {
 
 .title-info.update > .providers-info > a > img.provider {
   float: left;
-  margin-top: 32px;
+  margin-top: -32px;
   margin-left: 0px;
 }
 
 .title-info > .providers-info > a > img.provider:hover {
-  width: 2.4em;
-  height: 2.4em;
+  width: 2.3em;
+  height: 2.3em;
 }
+
+
+.update-info {
+  margin: 5px;
+}
+
 
 .title-year {
   float: right;
@@ -283,10 +338,7 @@ div#list-view {
   font-size: 1.4em;
 }
 
-.user {
-  color: red;
-  float: right;
-}
+
 
 .owl-item.active.center {
   box-sizing: border-box;
@@ -312,6 +364,9 @@ div#list-view {
 .update-content > i:hover {
   cursor: pointer;
 }
+
+
+
 /*.ui.link.card > .update-list-img > .update-img {
   top: 200px;
   width: 280px;

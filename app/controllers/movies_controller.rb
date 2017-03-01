@@ -32,9 +32,8 @@ end
 
 post '/movies/pulse' do
   refresh_rate = Date.today - 5
-  oldest_providers = Provider.order(updated_at: 'asc').where("updated_at < ?", refresh_rate).limit(1)
-  oldest_providers.each do |p| 
-    movie = p.movie
+  oldest_movies = Movie.order(updated_at: 'asc').where("updated_at < ?", refresh_rate).limit(1)
+  oldest_movies.each do |movie| 
     movie_info = get_movie_info(movie.guidebox_id)
     attrs = update_movie_info(movie_info)
     movie.update_attributes(attrs)

@@ -17,7 +17,10 @@ gem 'shotgun'
 gem 'bcrypt'
 gem 'netflix_roulette'
 gem 'json'
-
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'multi_json'
+# gem 'dotenv'
 
 
 group :test do

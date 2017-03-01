@@ -32,5 +32,4 @@ class User < ActiveRecord::Base
     self.following.include?(user)
   end
 
- 
 end
