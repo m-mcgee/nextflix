@@ -16,12 +16,14 @@ require 'logger'
 require 'pry'
 require 'bcrypt'
 require 'net/http'
-require 'netflix_roulette'
 require 'json'
 require 'nokogiri'
 require 'time'
 require 'multi_json'
+require 'koala'
 
+require 'dotenv'
+Dotenv.load
 
 
 require 'sinatra'

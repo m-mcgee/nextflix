@@ -19,3 +19,4 @@ def get_updates
 	new_movies.each { |lm| lm.created_at - lm.list.created_at > 5.minutes ? updates << lm : next }
 	updates = updates.flatten.sort_by {|u| u.created_at}.reverse
 end
+

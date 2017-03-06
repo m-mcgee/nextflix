@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :email, presence: true, uniqueness: true 
-  validates :username, presence: true, uniqueness: true 
+  validates :username, presence: true
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
@@ -31,5 +31,6 @@ class User < ActiveRecord::Base
   def is_following?(user)
     self.following.include?(user)
   end
+
 
 end

@@ -29,18 +29,21 @@ function carouselLoader(){
     }
 	});
 
-$('.standard').on('changed.owl.carousel', function(e) {
+$('.standard').on('change.owl.carousel', function(e) {
 	var list = $(this).closest('.list-view');
 	var backdrop = $(list).find('.backdrop');
-	var first_item = $(this).find('.active')[0];
-	var backdrop_url = $(first_item).children().data('backdrop'); 
-	$(backdrop).attr('src', backdrop_url)
+	setTimeout(function() {
+		var first_item = $(list).find('.active')[0];
+		var backdrop_url = $(first_item).children().data('backdrop'); 
+		$(backdrop).attr('src', backdrop_url)
+	}, 100);
 });
 
 
 	$('.small').owlCarousel({
     margin:10,
     responsiveClass:true,
+    center: true,
     lazyLoad: true,
     slideBy: 1,
     nav: true,
@@ -64,6 +67,16 @@ $('.standard').on('changed.owl.carousel', function(e) {
         	nav:true
         }
     }
+	});
+
+	$('.small').on('change.owl.carousel', function(e) {
+		var list = $(this).closest('.list-view');
+		var backdrop = $(list).find('.backdrop');
+		setTimeout(function() {
+			var first_item = $(list).find('.center')[0];
+			var backdrop_url = $(first_item).children().data('backdrop'); 
+			$(backdrop).attr('src', backdrop_url)
+		}, 100);
 	});
 
 
@@ -116,7 +129,11 @@ $(document).ready(function() {
 						url: $('#create-form')[0].action,
 						data: $('#create-form').serialize()
 					}).done(function(response){
-						$('.list-container').before(response);
+						if ($('.list-container.my-lists').children('.list').length < 1){
+							$('.no-lists').replaceWith(response);
+						} else {
+							$('.list-container.my-lists').prepend(response);
+						}
 					})
 				}
 		});
@@ -382,7 +399,6 @@ $(document).ready(function() {
 	    type: 'POST',
 	    url: '/movies/pulse'
 	  });
-	  console.log('checked')
 	}, 15000);
 	
 

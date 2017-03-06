@@ -13,8 +13,8 @@
       <p><%= movie.overview %></p>
 
     
-      <div class="title-info update">
-        <div class="providers-info">
+      <div class="title-info movie-show">
+        <div class="providers-info movie-show">
           <% if movie.providers.length > 0 %>
             <% movie.providers.each do |provider| %>
               <% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>

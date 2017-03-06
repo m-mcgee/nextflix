@@ -7,7 +7,7 @@ def fix_title_spaces(title)
 end
 
 def search_for_movies(movie)
-	url = "https://api-public.guidebox.com/v1.43/US/rKHydWl62j3jkxEJIrVzQsBv2hpdnQRT/search/movie/title/#{movie}/fuzzy"
+	url = "https://api-public.guidebox.com/v1.43/US/#{ENV['GUIDEBOX_KEY']}/search/movie/title/#{movie}/fuzzy"
 	uri = URI(url)
 	response = Net::HTTP.get(uri)
 	titles_returned = JSON.parse(response)
@@ -16,7 +16,7 @@ def search_for_movies(movie)
 end
 
 def get_movie_info(movie_id)
-	url = "https://api-public.guidebox.com/v1.43/US/rKHydWl62j3jkxEJIrVzQsBv2hpdnQRT/movie/#{movie_id}"
+	url = "https://api-public.guidebox.com/v1.43/US/#{ENV['GUIDEBOX_KEY']}/movie/#{movie_id}"
 	uri = URI(url)
 	response = Net::HTTP.get(uri)
 	movie_info = JSON.parse(response)
@@ -24,13 +24,12 @@ def get_movie_info(movie_id)
 end
 
 def additional_images(imdb_id)
-
-	url = "http://api.themoviedb.org/3/movie/#{imdb_id}/images?api_key=f5cb893b797de0d40de812636384ca68&include_image_language=en,null"
+	url = "http://api.themoviedb.org/3/movie/#{imdb_id}/images?api_key=#{ENV['MOVIE_DB_KEY']}&include_image_language=en,null"
 	uri = URI(url)
 	response = Net::HTTP.get(uri)
 	tmdb = JSON.parse(response)
-	link = "https://image.tmdb.org/t/p/w780"
-	images =[link + tmdb['backdrops'][0]['file_path'], link + tmdb['backdrops'][1]['file_path']]
+	link = "https://image.tmdb.org/t/p/"
+	images =[link + "w300" + tmdb['backdrops'][0]['file_path'], link + "w1280" + tmdb['backdrops'][1]['file_path']]
 end
 
 def update_movie_info(movie_info)

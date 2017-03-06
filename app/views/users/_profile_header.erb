@@ -1,19 +1,21 @@
 <div class="ui grid profile-header">
 	<div class="six wide column user-info">
-		<% if current_user.id == user.id %>
-			<h1>Welcome, <%= current_username %>!</h1>
-			<h2>add edit button</h2>
-		<% else %>
-			<h1><%= user.username %>'s lists</h1>
-		<% if !current_user.is_following?(user) %>	
-			<button id="follow-user" class="ui blue button" data-user-id="<%= user.id %>">Follow</button>
-		<% else %>
-			<button id="unfollow-user" class="ui basic button" data-user-id="<%= user.id %>">Following</button>
-		<% end %>
+		<div>
+			<img class="ui top aligned small image" src="<%= user.img %>">	
+		</div>
+		<div>
+			<h2 class="username"><%= user.username %></h2>	
+		</div>
+		<% if current_user.id != user.id %>
+			<% if !current_user.is_following?(user) %>	
+				<button id="follow-user" class="ui blue button" data-user-id="<%= user.id %>">Follow</button>
+			<% else %>
+				<button id="unfollow-user" class="ui basic button" data-user-id="<%= user.id %>">Following</button>
+			<% end %>
 		<% end %>
 	</div>
 
-	<div class="ten wide column ui grid user-stats">
+	<div class="ten wide column ui grid middle aligned user-stats">
 		<div class="three wide column list-stats">
 			<h4 class='list-count'><%= user.lists.count %> <span>Lists</span></h4>
 		</div>
@@ -27,3 +29,7 @@
 </div>
 
 <div class="follow-stats-view"></div>
+
+<% if current_user.id != user.id %>
+	<div class="ui divider"></div>
+<% end %>

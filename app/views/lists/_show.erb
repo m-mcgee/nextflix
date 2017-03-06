@@ -41,10 +41,12 @@
 		<p><%= list.description %></p>
 	</div>
 
-	<div class="list-jumbotron">
-		<% latest = list.list_movies.last.movie %>
-		<img class="ui centered fluid image backdrop" src="<%= latest.wide_2 %>">
-	</div>
+	<% if list.movies.length > 0 %>
+		<div class="list-jumbotron">
+			<% latest = list.list_movies.last.movie %>
+			<img class="ui centered fluid image backdrop" src="<%= latest.wide_2 %>">
+		</div>
+	<% end %>
 
 	<div class="owl-container list">
 		<% count = list.movies.length %>
