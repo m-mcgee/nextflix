@@ -1,5 +1,5 @@
 
-<div id="list-<%= list.id %>" class="list">	
+<div id="list-<%= list.id %>" class="list list-view">	
 
 	<div class="list-header">
 		<h4 class="list-name"><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
@@ -41,7 +41,14 @@
 		<p><%= list.description %></p>
 	</div>
 
-	<div class="owl-container">
+	<% if list.movies.length > 0 %>
+		<div class="list-jumbotron">
+			<% latest = list.list_movies.last.movie %>
+			<img class="ui centered fluid image backdrop" src="<%= latest.wide_2 %>">
+		</div>
+	<% end %>
+
+	<div class="owl-container list">
 		<% count = list.movies.length %>
 		<% if count < 8 %>
 			<div class="owl-carousel owl-theme small">
@@ -51,19 +58,24 @@
 		
 		<% list.list_movies.reverse.each do |lm| %>
 
-			<div class="ui link card">
+			<div class="ui link card" data-backdrop="<%= lm.movie.wide_2 %>">
 			  <a class="image movie-img" href="/movies/<%= lm.movie.id %>">
-			    <img class="owl-lazy" data-src="<%= lm.movie.img_url %>">
+			    <img class="owl-lazy" data-src="<%= lm.movie.wide_1 %>">
 			  </a>
 			  <% if list.user == current_user %>
 			  	<i class="remove icon remove-movie" data-url="/list_movies/<%= lm.id %>" data-list-movie="<%= lm.id %>" ></i>	
 			  <% end %>
-			  <div class="title-info">
-					<div class="providers-info">
+			  <div class="title-info list">
+			  	<% if lm.movie.title.length > 22 %>
+			  		<p class="movie-title"><%= lm.movie.title[0..21] %>...</p>
+			  	<% else %>
+			  		<p class="movie-title"><%= lm.movie.title %></p>
+			  	<% end %>
+					<div class="providers-info list">
 						<% if lm.movie.providers.length > 0 %>
 							<% lm.movie.providers.each do |provider| %>
 								<% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>
-									<a href="<%= provider.url %>"><img class="provider" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
+									<a href="<%= provider.url %>"><img class="provider list" src="/images/<%= provider.name.split("_")[0] %>.png"></a>
 								<% end %>
 							<% end %>
 				  	<% end %>

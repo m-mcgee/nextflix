@@ -10,6 +10,9 @@
 
 				<div class="ui link card update">
 				  <a class="image update-list-img" href="/lists/<%= update.id %>">
+				  	<div class="ui black left corner label">
+							<i class="large list icon"></i>
+				  	</div>
 				    <img class="owl-lazy update-img" data-src="<%= update.movies.first.img_url %>">
 				  </a>
 
@@ -29,11 +32,14 @@
 
 				<div class="ui link card">
 				  <a class="image movie-img" href="/movies/<%= update.movie.id %>">
+				  	<div class="ui black left corner label">
+							<i class="film icon"></i>
+				  	</div>
 				    <img class="owl-lazy" data-src="<%= update.movie.img_url %>">
 				  </a>
 
 				  <div class="title-info">
-						<div class="providers-info">
+						<div class="providers-info update">
 							<% if update.movie.providers.length > 0 %>
 								<% update.movie.providers.each do |provider| %>
 									<% if ["hulu_plus", "amazon_prime", "netflix"].include? provider.name %>
@@ -46,16 +52,21 @@
 
 				  <div class="update-info">
 				  	<div class="movie-info">
-			  			<h4><i class="film icon"></i><a href="/users/<%= update.list.user.id %>"><%= update.list.user.username %></a> added <%= update.movie.title %> to <a href="lists/<%= update.list.id %>"><%= update.list.name %> </a></h4>
+			  			<h4><i class="film icon"></i><a href="/users/<%= update.list.user.id %>"><%= update.list.user.username %></a> added <%= update.movie.title %> </h4>
+			  			<h4>to <a href="lists/<%= update.list.id %>"><%= update.list.name %> </a></h4>
 							<p>
 								<time class="timeago" datetime="<%= DateTime.parse(update.created_at.to_s).iso8601 %>"></time>
 							</p>
 				  	</div>
 				  </div>
 				</div>
+
 			<% elsif update.class == UserFollower %>
 				<div class="ui link card">
 				  <a class="image update-user-follower-img" href="">
+				  	<div class="ui black left corner label">
+							<i class="user icon"></i>
+				  	</div>
 				    <img class="owl-lazy update-img" data-src="">
 				  </a>
 
@@ -73,6 +84,9 @@
 		
 				<div class="ui link card update">
 				  <a class="image update-list-img" href="/lists/<%= update.list.id %>">
+				  	<div class="ui black left corner label">
+							<i class="star icon"></i>
+				  	</div>
 				    <img class="owl-lazy update-img" data-src="<%= update.list.movies.first.img_url %>">
 				  </a>
 

@@ -7,7 +7,6 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
 require 'uri'
 require 'pathname'
 
@@ -17,10 +16,15 @@ require 'logger'
 require 'pry'
 require 'bcrypt'
 require 'net/http'
-require 'netflix_roulette'
 require 'json'
 require 'nokogiri'
 require 'time'
+require 'multi_json'
+require 'koala'
+
+require 'dotenv'
+Dotenv.load
+
 
 require 'sinatra'
 require "sinatra/reloader" if development?

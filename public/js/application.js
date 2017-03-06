@@ -3,36 +3,49 @@ function carouselLoader(){
     margin:10,
     responsiveClass:true,
     lazyLoad: true,
-    slideBy: 3,
+    slideBy: 1,
     loop: true,
     stagePadding: 50,
     nav: true,
     navText: ['<i class="chevron left icon"></i>', '<i class="chevron right icon"></i>'],
     dots: false,
     responsive:{
-        0:{
-            items:1,
-            nav:true
-        },
-        600:{
-            items:3,
-            nav:true
-        },
-        1000:{
-            items:5,
-            nav:true
-        },
-        1500:{
-        	items: 7,
-        	nav:true
-        }
+	    0:{
+	        items:1,
+	        nav:true
+	    },
+	    680:{
+	        items:3,
+	        nav:true
+	    },
+	    1138:{
+	        items:5,
+	        nav:true
+	    },
+	    1500:{
+	    	items: 6,
+	    	nav:true
+	    }
     }
 	});
-		$('.small').owlCarousel({
+
+$('.standard').on('change.owl.carousel', function(e) {
+	var list = $(this).closest('.list-view');
+	var backdrop = $(list).find('.backdrop');
+	setTimeout(function() {
+		var first_item = $(list).find('.active')[0];
+		var backdrop_url = $(first_item).children().data('backdrop'); 
+		$(backdrop).attr('src', backdrop_url)
+	}, 100);
+});
+
+
+	$('.small').owlCarousel({
     margin:10,
     responsiveClass:true,
+    center: true,
     lazyLoad: true,
-    slideBy: 3,
+    slideBy: 1,
     nav: true,
     navText: ['<i class="chevron left icon"></i>', '<i class="chevron right icon"></i>'],
     dots: false,
@@ -41,20 +54,31 @@ function carouselLoader(){
             items:1,
             nav:true
         },
-        600:{
+        680:{
             items:3,
             nav:true
         },
-        1000:{
+        1138:{
             items:5,
             nav:true
         },
         1500:{
-        	items: 7,
+        	items: 6,
         	nav:true
         }
     }
 	});
+
+	$('.small').on('change.owl.carousel', function(e) {
+		var list = $(this).closest('.list-view');
+		var backdrop = $(list).find('.backdrop');
+		setTimeout(function() {
+			var first_item = $(list).find('.center')[0];
+			var backdrop_url = $(first_item).children().data('backdrop'); 
+			$(backdrop).attr('src', backdrop_url)
+		}, 100);
+	});
+
 
 	var updates = $('.update-list').owlCarousel({
 		center: true,
@@ -105,7 +129,11 @@ $(document).ready(function() {
 						url: $('#create-form')[0].action,
 						data: $('#create-form').serialize()
 					}).done(function(response){
-						$('.list-container').before(response);
+						if ($('.list-container.my-lists').children('.list').length < 1){
+							$('.no-lists').replaceWith(response);
+						} else {
+							$('.list-container.my-lists').prepend(response);
+						}
 					})
 				}
 		});
@@ -367,14 +395,12 @@ $(document).ready(function() {
 	$("time.timeago").timeago();
 
 	setInterval(function() {
-		console.log('fired timer')
 	  $.ajax({
 	    type: 'POST',
 	    url: '/movies/pulse'
 	  });
-	}, 10000);
+	}, 15000);
 	
-
 
 });
 

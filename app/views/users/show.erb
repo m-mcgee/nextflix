@@ -8,12 +8,12 @@
 	  <div class="item" data-tab="lists-followed">Favorites</div>
 	</div>
 	<div class="ui active tab " data-tab="my-lists">
-	  <%= erb :'/lists/_my_lists', locals: {lists: lists} %>
+	  <%= erb :'/lists/_my_lists', locals: {lists: lists, user: user} %>
 	</div>
 	<div class="ui tab" data-tab="lists-followed">
 	  <%= erb :'/lists/_followed_lists', locals: {lists: current_user.followed_lists} %>
 	</div>
 
 <% else %>
-	<%= erb :'/lists/_my_lists', locals: {lists: lists} %>
+	<%= erb :'/lists/_my_lists', locals: {lists: lists, user: user} %>
 <% end %>

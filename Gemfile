@@ -15,10 +15,15 @@ gem 'rake'
 gem 'rack', '1.5.2'
 gem 'shotgun'
 gem 'bcrypt'
-gem 'netflix_roulette'
 gem 'json'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "koala", "~> 2.4"
+gem 'multi_json'
 
-
+group :development do 
+	gem 'dotenv', :group => [:development]
+end
 
 group :test do
   gem 'shoulda-matchers'

@@ -1,9 +1,13 @@
-<div class="list-container">
-  <% if lists %>
+<div class="list-container my-lists">
+  <% if lists.count > 0 %>
   	<% lists.each do |list| %>
   		<%= erb :'/lists/_show', locals: {list: list} %>
   	<% end %>
   <% else %>
-  	<h4>You have no lists. </h4>
+  	<% if current_user == user %>
+  		<h3 class="no-lists">You have not created any lists yet.</h3>
+  	<% else %>
+  		<h3 class="no-lists"><%= user.username %> has not created any lists yet.</h3>
+  	<% end %>
   <% end %>
 </div>
