@@ -3,7 +3,7 @@ def search_response(people, lists)
   listarray = []
 
   people.each do |p|
-  	peoplearray << {"title":"#{p.username}", "url":"/users/#{p.id}", "description":"#{p.email}"}
+  	peoplearray << {"title":"#{p.username}", "url":"/users/#{p.id}", "description":"#{p.lists.count} lists", "image":"#{p.img}"}
   end
 
   lists.each do |l|
