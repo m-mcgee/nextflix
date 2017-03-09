@@ -48,6 +48,13 @@ p .errors {
 }
 
 
+div.results.transition.visible .category .result .image {
+  float: left;
+  margin-right: 10px;
+  width: 5em;
+  height: 5em;
+}
+
 
 /* Owl Carousel Style ===================================================================================*/
 

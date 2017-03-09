@@ -325,7 +325,8 @@ $(document).ready(function() {
 	          response.results[name].results.push({
 	            title       : item.name,
 	            description : item.description,
-	            url         : item.html_url
+	            url         : item.html_url, 
+	            image       : item.img,
 	          });
 	        });
 	        return response;
