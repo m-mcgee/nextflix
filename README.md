@@ -32,4 +32,4 @@ ___
 
 ##Use the global search to find users or lists to follow.
 
-![Search](readme-assets/_search.png)
+![Search](readme-assets/search.png)
