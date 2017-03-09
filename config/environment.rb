@@ -13,7 +13,7 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
-require 'pry'
+
 require 'bcrypt'
 require 'net/http'
 require 'json'
@@ -28,6 +28,7 @@ Dotenv.load
 
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'pry' if development?
 
 require 'erb'
 
