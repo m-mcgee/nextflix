@@ -9,19 +9,27 @@ ___
 
 ![Homepage View](readme-assets/profile.png)
 
+
 ##Favorite lists from other users, 
 
 ![Favorite lists](readme-assets/favorite_lists.png)
+
 
 ##And the update feed from users you follow.
 
 ![Update Feed](readme-assets/feed.png)
 
+
 ##Clicking on a movie will provide info about the film and easy access to where it's streaming or adding the movie to your lists.
 
-![Search](readme-assets/movie_show.png)
+![Movie show](readme-assets/movie_show.png)
+
 
 ##Searching for movies to add to your list is simple.
 
-![Search](readme-assets/search.png)
+![Movie search](readme-assets/movie_search.png)
 
+
+##Use the global search to find users or lists to follow.
+
+![Search](readme-assets/_search.png)
