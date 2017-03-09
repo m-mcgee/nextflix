@@ -33,7 +33,7 @@ def additional_images(imdb_id)
 end
 
 def update_movie_info(movie_info)
-	params = {title: movie_info["title"], year: movie_info["release_year"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"], genre: ""}
+	params = {title: movie_info["title"], year: movie_info["release_year"], overview: movie_info["overview"], img_url: movie_info["poster_400x570"], genre: "", updated_at: Time.now}
 	wide_images = additional_images(movie_info['imdb'])
 	params[:wide_1] = wide_images[0]
 	params[:wide_2] = wide_images[1]

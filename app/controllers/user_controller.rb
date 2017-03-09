@@ -51,7 +51,7 @@ post '/login' do
   user = User.find_by_email(params[:email])
   if user && user.auth(params[:password])
     session[:user] = user.id
-    redirect '/'
+    redirect "/users/#{user.id}"
   else
     @errors = "Invalid Username/Password Combination"
     erb :'login'
@@ -66,7 +66,11 @@ end
 get '/users/:id' do
   user = User.find(params[:id])
   lists = List.where(user_id: user.id).order(created_at: :desc)
-  erb :'/users/show', locals: {user: user, lists: lists, movies_found: false}
+  if current_user == user
+    erb :'/users/show', locals: {user: user, lists: lists, movies_found: false, updates: get_updates}
+  else
+    erb :'/users/show', locals: {user: user, lists: lists, movies_found: false}
+  end
 end
 
 
@@ -74,8 +78,6 @@ post '/users/:id' do
   if request.xhr?
     movie_id = params.keys[0]
     movie_info = get_movie_info(movie_id)
-  else
-    puts "nope<<<<<<<<<<<"
   end
 end
 

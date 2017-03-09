@@ -3,6 +3,10 @@
 
 	<div class="list-header">
 		<h4 class="list-name"><a href="/lists/<%= list.id %>"><%= list.name %></a></h4>
+		<% if list.user != current_user %>
+			<p class="list-author">by <a href="/users/<%= list.user.id %>"><%= list.user.username %></a></p>
+		<% end %>
+		
 		<div class="list-buttons">
 			<% if list.user == current_user %>
 				<a id="new-movie" href="/lists/<%= list.id %>/movies/search"><i class="green plus icon" ></i></a>

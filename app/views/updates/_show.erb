@@ -67,12 +67,17 @@
 				  	<div class="ui black left corner label">
 							<i class="user icon"></i>
 				  	</div>
-				    <img class="owl-lazy update-img" data-src="">
+				  	<% if update.followed == current_user %>
+				  		<img class="owl-lazy update-img" data-src="<%= update.follower.img %>">
+				  	<% else %>
+				    	<img class="owl-lazy update-img" data-src="<%= update.followed.img %>">
+				    <% end %>
 				  </a>
 
 				  <div class="update-info">
 						<div class="list-info">
-							<h4><i class="user icon"></i><a href="/users/<%= update.follower.id %>"><%= update.follower.username %></a> followed <a href="/users/<%= update.followed.id %>"><%= update.followed.username %></a></h4>
+							<% update.followed == current_user ? followed = "You" : followed = update.followed.username %>
+							<h4><i class="user icon"></i><a href="/users/<%= update.follower.id %>"><%= update.follower.username %></a> followed <a href="/users/<%= update.followed.id %>"><%= followed %></a></h4>
 							<p>
 								<time class="timeago" datetime="<%= DateTime.parse(update.created_at.to_s).iso8601 %>"></time>
 							</p>

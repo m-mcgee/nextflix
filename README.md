@@ -1,15 +1,27 @@
-## Phase Two Assessment
+# Nextflix (work in progress)
+___
+### 
+It's hard to keep track of where your favorite movies are being streamed, let Nextflix help. Create lists of your favorite movies, follow other users and their lists, and find out which streaming services are currently showing each movie. Nextflix is also great for adding upcoming releases to get alerted when they are released!  
 
-This assessment is a way to gain insight into your current abilities in the concepts taught during Phase Two. This assessment will provide you insight into your strengths and areas where you might need improvement. *Success* on this assessment means that you *gain self awareness* and *expose your ignorance* to instructors who want to help you get better. These are uncomfortable, but essential to learning.
+This project is live on Heroku: 
+___
+##On the home profile page view lists that you have created, 
 
-In this assessment, you are asked to complete three challenges. The first two challenges should take about an hour an half to complete. The final challenge may take you the rest of core hours to complete. It is recommend to complete parts 1 and 2 first and then complete as many releases as you can in the remaining challenge.
+![Homepage View](readme-assets/profile.png)
 
-Do not build more complexity than is explicitly required.
+##Favorite lists from other users, 
 
-- [Part 1 - JavaScript Objects](part-1/)
-- [Part 2 - AJAX](part-2/)
-- [Part 3 - Build a CRUD App](part-3/)
+![Favorite lists](readme-assets/favorite_lists.png)
 
+##And the update feed from users you follow.
 
-## Are you panicking? Read this.
-If you feel yourself getting anxious or you begin to panic, take a moment to read [this](calm.md).
+![Update Feed](readme-assets/feed.png)
+
+##Clicking on a movie will provide info about the film and easy access to where it's streaming or adding the movie to your lists.
+
+![Search](readme-assets/movie_show.png)
+
+##Searching for movies to add to your list is simple.
+
+![Search](readme-assets/search.png)
+

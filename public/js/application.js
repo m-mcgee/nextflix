@@ -382,13 +382,40 @@ $(document).ready(function() {
 
 	$('.follow-stats').click(function(){
 		var url = this.dataset.url
-		debugger;
 		$.ajax({
 			url: url,
 			method: 'GET'
 		}).done(function(response){
 			$('.follow-stats-view').replaceWith(response);
 			$('.follow-stats-view').modal('show')
+		})
+	});
+
+	$('body').on('click', '.user-following', function() {
+		var button = this;
+		var url = this.dataset.url;
+		var user = this.dataset.user;
+		$.ajax({
+			url: url,
+			method: 'POST'
+		}).done(function(response){
+			$(button).removeClass('user-following inverted').addClass('user-follow');
+			$(button.children[0]).text('Follow');
+			$(button).attr('data-url', '/users/' + user + '/follow')
+		})
+	});
+
+	$('body').on('click', '.user-follow', function() {
+		var button = this;
+		var url = this.dataset.url;
+		var user = this.dataset.user;
+		$.ajax({
+			url: url,
+			method: 'POST'
+		}).done(function(response){
+			$(button).removeClass('user-follow').addClass('user-following inverted');
+			$(button.children[0]).text('Following');
+			$(button).attr('data-url', '/users/' + user + '/unfollow');
 		})
 	});
 
@@ -401,6 +428,14 @@ $(document).ready(function() {
 	  });
 	}, 15000);
 	
+
+	if ($('.new-user').length > 0){
+		alert('NEW USER')
+		new jBox('Tooltip', {
+  		attach: '.tooltip'
+		});
+	}
+
 
 });
 
