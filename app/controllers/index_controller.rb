@@ -1,7 +1,6 @@
 get '/' do
 	if current_user 
 		redirect "/users/#{current_user.id}"
-  	erb :'users/show', locals: {updates: get_updates}
 	else
 		erb :'index', :layout => :nouser_layout
 	end

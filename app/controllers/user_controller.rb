@@ -19,7 +19,6 @@ end
 get '/login' do
   session['oauth'] = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], "#{request.base_url}/call_back")
   redirect session['oauth'].url_for_oauth_code({scope: 'email, user_friends'})
-  # erb :'login'
 end
 
 get '/call_back' do 
@@ -37,24 +36,6 @@ get '/call_back' do
     end
   rescue
     redirect '/?error=user_denied'
-  end
-end
-
-
-
-
-
-
-
-
-post '/login' do
-  user = User.find_by_email(params[:email])
-  if user && user.auth(params[:password])
-    session[:user] = user.id
-    redirect "/users/#{user.id}"
-  else
-    @errors = "Invalid Username/Password Combination"
-    erb :'login'
   end
 end
 
