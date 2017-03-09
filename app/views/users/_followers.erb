@@ -10,14 +10,14 @@
 			  <div class="item">
 			    <div class="right floated content">
 			    	<% if current_user.is_following?(follower) %>
-			    		<div class="ui button">Following</div>
+			    		<div class="ui inverted button user-following" data-url="/users/<%= follower.id %>/unfollow" data-user="<%= follower.id %>" ><span>Following</span></div>
 			    	<% else %>
-			      	<div class="ui button">Follow</div>
+			      	<div class="ui button user-follow" data-url='/users/<%= follower.id %>/follow' data-user="<%= follower.id %>"><span>Follow</span></div>
 			      <% end %>
 			    </div>
 			    <img class="ui tiny image" src="<%= follower.img %>">
 			    <div class="content">
-			      <a href="/users/<%= follower.id %>"><%= follower.username %></a>
+			      <h4><a href="/users/<%= follower.id %>"><%= follower.username %></a></h4>
 			    </div>
 			  </div>
 			<% end %>
