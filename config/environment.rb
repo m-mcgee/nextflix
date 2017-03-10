@@ -21,16 +21,15 @@ require 'nokogiri'
 require 'time'
 require 'multi_json'
 require 'koala'
-
-require 'dotenv'
-Dotenv.load
-
-
 require 'sinatra'
+require 'erb'
+
 require "sinatra/reloader" if development?
 require 'pry' if development?
+require 'dotenv' if development?
+Dotenv.load if development?
 
-require 'erb'
+
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
