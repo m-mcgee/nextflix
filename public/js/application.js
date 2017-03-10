@@ -216,6 +216,11 @@ $(document).ready(function() {
 			})
 	});
 
+  $('body').on('click', '.owl-item', function(){
+    n = $(this).index();
+    $(this).closest('.owl-carousel').trigger('to.owl.carousel', n);
+  });
+
 	$('body').on('click', '.movie-img', function(e){
 		e.preventDefault();
 		var movie = $(this);
@@ -252,13 +257,15 @@ $(document).ready(function() {
 	$('body').on('click', '.remove-movie', function(e){
 		e.preventDefault();
 		var url = $(this).data('url');
-		var list = $(this).closest('.list');
+		var list = $(this).closest('.owl-carousel');
+		list.trigger('next.owl.carousel');
+		$(this).closest('.owl-item').remove();
 		$.ajax({
 			method: "DELETE", 
 			url: url
 		}).done(function(response){
-			$(list).replaceWith(response);
-			carouselLoader();
+			// $(list).replaceWith(response);
+			// carouselLoader();
 		})
 	})
 
