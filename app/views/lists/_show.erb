@@ -48,6 +48,7 @@
 	<% if list.movies.length > 0 %>
 		<div class="list-jumbotron">
 			<% latest = list.list_movies.last.movie %>
+			<div class="backdrop title"><%= latest.title %></div>
 			<img class="ui centered fluid image backdrop" src="<%= latest.wide_2 %>">
 		</div>
 	<% end %>
@@ -62,7 +63,7 @@
 		
 		<% list.list_movies.reverse.each do |lm| %>
 
-			<div class="ui link card" data-backdrop="<%= lm.movie.wide_2 %>">
+			<div class="ui link card" data-backdrop="<%= lm.movie.wide_2 %>" data-title="<%= lm.movie.title %>">
 			  <a class="image movie-img" href="/movies/<%= lm.movie.id %>">
 			    <img class="owl-lazy" data-src="<%= lm.movie.wide_1 %>">
 			  </a>

@@ -32,9 +32,12 @@ function carouselLoader(){
 $('.standard').on('change.owl.carousel', function(e) {
 	var list = $(this).closest('.list-view');
 	var backdrop = $(list).find('.backdrop');
+	var backdropTitle = $(list).find('.backdrop.title');
 	setTimeout(function() {
 		var first_item = $(list).find('.active')[0];
 		var backdrop_url = $(first_item).children().data('backdrop'); 
+		var title = $(first_item).children().data('title');
+		$(backdropTitle).text(title);
 		$(backdrop).attr('src', backdrop_url)
 	}, 100);
 });
@@ -72,9 +75,12 @@ $('.standard').on('change.owl.carousel', function(e) {
 	$('.small').on('change.owl.carousel', function(e) {
 		var list = $(this).closest('.list-view');
 		var backdrop = $(list).find('.backdrop');
+		var backdropTitle = $(list).find('.backdrop.title');
 		setTimeout(function() {
 			var first_item = $(list).find('.center')[0];
 			var backdrop_url = $(first_item).children().data('backdrop'); 
+			var title = $(first_item).children().data('title');
+			$(backdropTitle).text(title);
 			$(backdrop).attr('src', backdrop_url)
 		}, 100);
 	});
@@ -216,10 +222,10 @@ $(document).ready(function() {
 			})
 	});
 
-  $('body').on('click', '.owl-item', function(){
-    n = $(this).index();
-    $(this).closest('.owl-carousel').trigger('to.owl.carousel', n);
-  });
+  // $('body').on('click', '.owl-item', function(){
+  //   n = $(this).index();
+  //   $(this).closest('.owl-carousel').trigger('to.owl.carousel', n);
+  // });
 
 	$('body').on('click', '.movie-img', function(e){
 		e.preventDefault();

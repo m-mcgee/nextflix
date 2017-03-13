@@ -256,6 +256,17 @@ h2.list-name-header, h3.list-desc-header {
   /*object-position: 0 30%;*/
 }
 
+.list-jumbotron .backdrop.title {
+  background:rgba(0,0,0,0.3);
+  color: white;
+  padding: 10px;
+  position: absolute;
+  z-index: 100;
+  margin-left: 9%;
+  font-size: 2vm;   /* IE9 */
+  font-size: 2vmin;
+}
+
 .list-jumbotron::after {
   display: block;
   position: relative;
