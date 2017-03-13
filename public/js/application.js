@@ -216,17 +216,23 @@ $(document).ready(function() {
 			})
 	});
 
+  $('body').on('click', '.owl-item', function(){
+    n = $(this).index();
+    $(this).closest('.owl-carousel').trigger('to.owl.carousel', n);
+  });
+
 	$('body').on('click', '.movie-img', function(e){
 		e.preventDefault();
 		var movie = $(this);
 		var url = this.href;
+		$('#movie-show').remove();
 		$.ajax({
 			method: "GET", 
 			url: url
 		}).done(function(response){
-			$(movie).append(response);
+			$('body').append(response);
+			$('.ui.dropdown').dropdown();
 			$('#movie-show').modal('show');
-			$('.ui.dropdown').dropdown()
 		})
 	});
 
@@ -252,13 +258,15 @@ $(document).ready(function() {
 	$('body').on('click', '.remove-movie', function(e){
 		e.preventDefault();
 		var url = $(this).data('url');
-		var list = $(this).closest('.list');
+		var list = $(this).closest('.owl-carousel');
+		list.trigger('next.owl.carousel');
+		$(this).closest('.owl-item').remove();
 		$.ajax({
 			method: "DELETE", 
 			url: url
 		}).done(function(response){
-			$(list).replaceWith(response);
-			carouselLoader();
+			// $(list).replaceWith(response);
+			// carouselLoader();
 		})
 	})
 
@@ -430,12 +438,45 @@ $(document).ready(function() {
 	}, 15000);
 	
 
-	if ($('.new-user').length > 0){
-		alert('NEW USER')
-		new jBox('Tooltip', {
-  		attach: '.tooltip'
-		});
+	var userNav = new jBox('Tooltip', {
+		position: {
+			x: 'left', 
+			y: 'bottom'
+		},
+		target: '.secondary.menu' ,
+		maxWidth: 400,
+		title: 'Navigation', 
+		pointer: 'left:10',
+		content: "Use the navigation tabs to switch between lists you've created, lists you've favorited, and your newsfeed."
+	})
+
+	var globalSearch = new jBox('Tooltip', {
+		position: {
+			x: 'left', 
+			y: 'bottom'
+		},
+		fixed: 'true',
+		target: '.search' ,
+		maxWidth: 400,
+		title: 'Search', 
+		pointer: 'left:10',
+		content: "Use the search to find users or lists you may want to follow."
+	})
+
+	if ($('.new-user').length > 0) {
+		setTimeout(function(){
+			userNav.open();
+		}, 1000)
+		setTimeout(function(){
+			userNav.close();
+			globalSearch.open();
+		}, 7000)
+		setTimeout(function(){
+			globalSearch.close();
+		}, 14000)
 	}
+
+
 
 
 });

@@ -3,9 +3,12 @@
 <% if current_user == user  %>
 	
 	<!-- <span class="tooltip" title="my first test">TESTING</span> -->
-
+	<% if current_user.lists.length < 1 %>
+	  <div class="new-user"></div>
+	<% end %>
+ 
 	<div class="ui pointing secondary menu">
-	  <div class="active item" data-tab="my-lists">Your Lists <a id="new-list" class="new-list" href="/lists/new"><i class="bordered inverted green plus icon" ></i></a>
+	  <div class="active item" data-tab="my-lists">Your Lists <a id="new-list" class="new-list" href="/lists/new"><i class="inverted green plus icon" ></i></a>
 	  	<%= erb :'/lists/_new' %></div>
 	  <div class="item" data-tab="lists-followed">Favorites</div>
 	  <div class="item" data-tab="user-feed">Feed</div>

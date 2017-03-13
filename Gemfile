@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala", "~> 2.4"
 gem 'multi_json'
+gem 'nokogiri', '~> 1.5.9'
 
 group :development do 
 	gem 'dotenv', :group => [:development]

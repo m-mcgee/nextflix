@@ -13,7 +13,7 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
-require 'pry'
+
 require 'bcrypt'
 require 'net/http'
 require 'json'
@@ -21,15 +21,15 @@ require 'nokogiri'
 require 'time'
 require 'multi_json'
 require 'koala'
-
-require 'dotenv'
-Dotenv.load
-
-
 require 'sinatra'
-require "sinatra/reloader" if development?
-
 require 'erb'
+
+require "sinatra/reloader" if development?
+require 'pry' if development?
+require 'dotenv' if development?
+Dotenv.load if development?
+
+
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
