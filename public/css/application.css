@@ -367,6 +367,11 @@ div#list-view {
 
 /* Modal Style =============================================================================*/
 
+#movie-show {
+  min-height: 600px;
+}
+
+
 #searched-titles {
   margin-top: 20px;
 }
