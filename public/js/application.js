@@ -165,7 +165,6 @@ $(document).ready(function() {
 		var formData = $(this).serialize();
 		var url = this.action;
 		var results = $('.search-results');
-		debugger;
 		$.ajax({
 			method: "GET",
 			url: url,
