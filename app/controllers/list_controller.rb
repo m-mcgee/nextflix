@@ -48,7 +48,9 @@ end
 
 delete '/lists/:id' do
 	list = List.find(params[:id])
+	list_followers = ListFollower.where(list_id: list.id)
 	user = list.user
+	list_followers.each { |lf| lf.destroy }
 	list.destroy
 	redirect "/users/#{user.id}"
 end

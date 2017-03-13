@@ -1,10 +1,11 @@
 <div id="" class="updates">	
-
 	<div class="owl-container">
+		<div class="owl-carousel owl-theme update-list">
 
-			<div class="owl-carousel owl-theme update-list">
+	<% if updates.count < 1 %>
+		<h3 class="no-updates">You must be follow other users to build your newsfeed.</h3>
+	<% else %>
 
-		
 		<% updates.each do |update| %>
 			<% if update.class == List %>
 
@@ -104,9 +105,9 @@
 						</div>	
 				  </div>
 				</div>
-
 			<% end %>
 		<% end %>
 		</div>
+	<% end %>
 	</div>
 </div>

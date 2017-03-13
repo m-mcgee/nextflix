@@ -1,9 +1,9 @@
 <div class="list-container followed-lists">
-  <% if lists %>
+  <% if lists.count > 0 %>
   	<% lists.each do |list| %>
   		<%= erb :'/lists/_show', locals: {list: list} %>
   	<% end %>
   <% else %>
-  	<h4>You have no favorite lists yet.</h4>
+  	<h3 class="no-lists">You have not followed any lists yet.</h3>
   <% end %>
 </div>
