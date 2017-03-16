@@ -1,9 +1,9 @@
-# Nextflix (work in progress)
+# Nextflix 
 ___
 ### 
 It's hard to keep track of where your favorite movies are being streamed, let Nextflix help. Create lists of your favorite movies, follow other users and their lists, and find out which streaming services are currently showing each movie. Nextflix is also great for adding upcoming releases to get alerted when they are released!  
 
-This project is live on Heroku: 
+This project is live on Heroku: http://nextflix-app.herokuapp.com/
 ___
 ##On the home profile page view lists that you have created, 
 
