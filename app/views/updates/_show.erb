@@ -7,7 +7,7 @@
 	<% else %>
 
 		<% updates.each do |update| %>
-			<% if update.class == List %>
+			<% if update.class == List && update.movies.count > 0 %>
 
 				<div class="ui link card update">
 				  <a class="image update-list-img" href="/lists/<%= update.id %>">
