@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="/js/jquery.js"></script>
-  <script src="/js/fb-auth.js"></script>
   <script src="/js/application.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
@@ -36,17 +35,54 @@
 
     <div class="ui text container">
       <h1 class="ui inverted header nouser">
-        Find your favorite movies streaming
+        Find your favorite movies streaming.
       </h1>
       <h2>Create lists. Follow friends. Enjoy.</h2>
-      <a class="ui huge primary button" href="/login">Get Started <i class="right arrow icon"></i></a>
+      <br>
+      <a class="ui huge primary button get-started" href="/login">Get Started <i class="right arrow icon"></i></a>
     </div>
-
   </div>
 
-  <div class="ui container">
-    <div class="layout main content">
-      <%= yield %>
+  
+  <div class="layout main content no-user">
+    <div class="ui container">
+      <div class="ui relaxed grid">
+        <div class="row">
+          <div class="eight wide column">
+            <img class="ui fluid image mockup" src="/images/mockups/nextflix_mockup.png" alt="">
+          </div>
+          <div class="eight wide middle aligned column">
+            <h2 class="ui center aligned header mock-info">Create lists to keep track of where your favorite movies are streaming or create a list for upcoming releases to find out when they are finally available to watch from your couch.</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="eight wide middle aligned column">
+            <h2 class="ui center aligned header mock-info">Easily search for new or classic movies to add to your lists.</h2>
+          </div>
+          <div class="eight wide column">
+            <img class="ui fluid right floated image mockup" src="/images/mockups/search_movie.png" alt="">
+          </div>
+        </div>
+        <div class="centered row ">
+          <div class="eight wide center aligned column ">
+            <h2 class="ui center aligned header mock-info">Watch a movie instantly with just a click.</h2>
+          </div>
+        </div>
+        <div class="centered row ">
+          <div class="eight wide column ">
+            <img class="ui fluid image mockup providers" src="/images/mockups/nfproviders.png" alt="">  
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      <div class="mockup-info">
+
+      </div> 
+
     </div>
   </div>
 
