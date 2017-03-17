@@ -55,6 +55,38 @@ div.results.transition.visible .category .result .image {
   height: 5em;
 }
 
+.get-started {
+  margin: 2em;
+}
+
+.main.content.no-user {
+  margin-top: 40px;
+}
+
+.main.content.no-user .ui.container img {
+  max-width: 90%;
+  margin: 40px 20px;
+}
+
+.facebook.icon {
+  color: white;
+  margin-left: 20px;
+}
+
+.ui.fluid.mockup {
+  margin-top: 0;
+}
+
+.ui.center.header.mock-info {
+  font-size: 2.9vm;   /* IE9 */
+  font-size: 2.9vmin;
+}
+
+.centered.row .eight.wide .ui.fluid.image.mockup.providers {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 
 /* Owl Carousel Style ===================================================================================*/
 
